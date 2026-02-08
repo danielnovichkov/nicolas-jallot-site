@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nicolas Jallot — Auteur, Réalisateur, Grand Reporter</title>
+    <meta name="description" content="Nicolas Jallot — écrivain, réalisateur de documentaires, grand reporter. Bibliographie, filmographie, prix et distinctions.">
+    <meta property="og:title" content="Nicolas Jallot — Auteur, Réalisateur, Grand Reporter">
+    <meta property="og:description" content="Écrivain, réalisateur de documentaires, grand reporter. Plus de 20 documentaires, 10 livres, 30 ans d'investigation.">
+    <meta property="og:type" content="profile">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --paper: #faf9f6;
+            --accent: #8b1a1a;
+            --muted: #6b6b6b;
+            --border: #e0ddd7;
+            --card-bg: #ffffff;
+            --section-alt: #f4f2ed;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        /* --- Language Toggle --- */
+        .lang-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 4px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .lang-btn {
+            padding: 6px 14px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--muted);
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+        .lang-btn.active {
+            background: var(--accent);
+            color: #fff;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(250, 249, 246, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 999;
+            padding: 0 20px;
+        }
+        nav ul {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            list-style: none;
+            gap: 0;
+            overflow-x: auto;
+        }
+        nav a {
+            display: block;
+            padding: 14px 16px;
+            text-decoration: none;
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            white-space: nowrap;
+            transition: color 0.2s;
+        }
+        nav a:hover { color: var(--accent); }
+
+        /* --- Hero --- */
+        .hero {
+            padding: 140px 20px 80px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .hero h1 {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            font-size: clamp(2.4rem, 5vw, 3.6rem);
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin-bottom: 16px;
+        }
+        .hero .subtitle {
+            font-size: 1.15rem;
+            color: var(--muted);
+            font-weight: 300;
+            margin-bottom: 32px;
+        }
+        .hero .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .hero .stat-item {
+            text-align: center;
+        }
+        .hero .stat-num {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            display: block;
+        }
+        .hero .stat-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--muted);
+        }
+
+        /* --- Sections --- */
+        section {
+            padding: 70px 20px;
+        }
+        section:nth-child(even) {
+            background: var(--section-alt);
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h2 {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+            color: var(--ink);
+        }
+        .section-lead {
+            color: var(--muted);
+            margin-bottom: 40px;
+            font-size: 1.05rem;
+            font-weight: 300;
+        }
+
+        /* --- Bio --- */
+        .bio-text p {
+            margin-bottom: 16px;
+        }
+        .bio-text strong {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* --- Themes --- */
+        .themes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 24px;
+        }
+        .theme-tag {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        /* --- Timeline items (books & films) --- */
+        .timeline-item {
+            border-left: 2px solid var(--border);
+            padding: 0 0 32px 24px;
+            position: relative;
+        }
+        .timeline-item:last-child { padding-bottom: 0; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 6px;
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+        .timeline-year {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 4px;
+        }
+        .timeline-title {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .timeline-meta {
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin-bottom: 6px;
+        }
+        .timeline-links a {
+            font-size: 0.85rem;
+            color: var(--accent);
+            text-decoration: none;
+            margin-right: 16px;
+        }
+        .timeline-links a:hover { text-decoration: underline; }
+
+        /* --- Films --- */
+        .film-grid {
+            display: grid;
+            gap: 16px;
+        }
+        .film-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 16px;
+        }
+        .film-card .film-info { flex: 1; }
+        .film-card .film-title {
+            font-family: 'Libre Baskerville', serif;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+        .film-card .film-meta {
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+        .film-card .film-year {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent);
+            white-space: nowrap;
+        }
+
+        /* --- Awards --- */
+        .award-item {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            gap: 16px;
+            align-items: baseline;
+        }
+        .award-item:last-child { border-bottom: none; }
+        .award-year {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent);
+            min-width: 50px;
+        }
+        .award-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .award-work {
+            font-size: 0.85rem;
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        /* --- Links / Profiles --- */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+        }
+        .link-card {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--ink);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .link-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 2px 8px rgba(139, 26, 26, 0.08);
+        }
+        .link-card .link-icon {
+            font-size: 1.4rem;
+            width: 32px;
+            text-align: center;
+        }
+        .link-card .link-label {
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        .link-card .link-sub {
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        /* --- Contact --- */
+        .contact-info {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 32px;
+        }
+        .contact-info p {
+            margin-bottom: 12px;
+            color: var(--muted);
+        }
+        .contact-info a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .contact-info a:hover { text-decoration: underline; }
+        .contact-method {
+            margin-bottom: 20px;
+        }
+        .contact-method h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.8rem;
+            color: var(--muted);
+            border-top: 1px solid var(--border);
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 600px) {
+            nav a { padding: 12px 10px; font-size: 11px; }
+            .hero { padding: 120px 20px 60px; }
+            .hero .stats { gap: 24px; }
+            section { padding: 50px 16px; }
+            .film-card { flex-direction: column; gap: 8px; }
+            .award-item { flex-direction: column; gap: 4px; }
+            .lang-toggle { top: 12px; right: 12px; }
+        }
+
+        /* --- Language visibility --- */
+        [data-lang="en"] { display: none; }
+        html[lang="en"] [data-lang="fr"] { display: none; }
+        html[lang="en"] [data-lang="en"] { display: unset; }
+        /* Fix for block elements */
+        html[lang="en"] div[data-lang="en"],
+        html[lang="en"] p[data-lang="en"],
+        html[lang="en"] section[data-lang="en"],
+        html[lang="en"] li[data-lang="en"],
+        html[lang="en"] span[data-lang="en"] { display: unset; }
+        html[lang="fr"] div[data-lang="en"],
+        html[lang="fr"] p[data-lang="en"],
+        html[lang="fr"] section[data-lang="en"],
+        html[lang="fr"] li[data-lang="en"],
+        html[lang="fr"] span[data-lang="en"] { display: none; }
+        html[lang="en"] div[data-lang="fr"],
+        html[lang="en"] p[data-lang="fr"],
+        html[lang="en"] section[data-lang="fr"],
+        html[lang="en"] li[data-lang="fr"],
+        html[lang="en"] span[data-lang="fr"] { display: none; }
+    </style>
+</head>
+<body>
+
+<!-- Language Toggle -->
+<div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('fr')" id="btn-fr">FR</button>
+    <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
+</div>
+
+<!-- Navigation -->
+<nav>
+    <ul>
+        <li><a href="#bio" data-lang="fr">Biographie</a><a href="#bio" data-lang="en">Biography</a></li>
+        <li><a href="#books" data-lang="fr">Livres</a><a href="#books" data-lang="en">Books</a></li>
+        <li><a href="#films" data-lang="fr">Films</a><a href="#films" data-lang="en">Films</a></li>
+        <li><a href="#awards" data-lang="fr">Prix</a><a href="#awards" data-lang="en">Awards</a></li>
+        <li><a href="#links" data-lang="fr">Liens</a><a href="#links" data-lang="en">Links</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- Hero -->
+<header class="hero">
+    <h1>Nicolas Jallot</h1>
+    <p class="subtitle" data-lang="fr">Écrivain &middot; Réalisateur &middot; Grand Reporter</p>
+    <p class="subtitle" data-lang="en">Writer &middot; Documentary Filmmaker &middot; Investigative Journalist</p>
+    <div class="stats">
+        <div class="stat-item">
+            <span class="stat-num">10</span>
+            <span class="stat-label" data-lang="fr">Livres</span>
+            <span class="stat-label" data-lang="en">Books</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-num">24+</span>
+            <span class="stat-label">Documentaires</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-num">30+</span>
+            <span class="stat-label" data-lang="fr">Ans de carrière</span>
+            <span class="stat-label" data-lang="en">Years of career</span>
+        </div>
+    </div>
+</header>
+
+<!-- Biography -->
+<section id="bio">
+    <div class="container">
+        <h2 data-lang="fr">Biographie</h2>
+        <h2 data-lang="en">Biography</h2>
+
+        <div class="bio-text" data-lang="fr">
+            <p>Né en <strong>1965 à Renazé</strong> (Mayenne), dans le bassin ardoisier du Haut-Anjou, Nicolas Jallot est le fils d'un mineur de fond-perreyeur. Cette origine marquera profondément son œuvre, jusqu'à son documentaire et livre sur les «&nbsp;gueules bleues&nbsp;» (2023-2024).</p>
+            <p>Journaliste dès le début des années 1990, il collabore avec <strong>Le Point</strong>, <strong>VSD</strong>, <strong>La Chronique d'Amnesty Internationale</strong>, avant de devenir chef du service étranger de <strong>France Soir</strong> (1997-2001).</p>
+            <p>En 2001, sous l'influence de son mentor <strong>Christophe de Ponfilly</strong>, il quitte la presse quotidienne pour se consacrer au documentaire de création. Depuis, il a réalisé plus de vingt films pour <strong>France 2, France 3, France 5, Arte, LCP, M6</strong>.</p>
+            <p>Auteur de dix ouvrages, ses thèmes de prédilection traversent l'histoire soviétique, l'espionnage, l'Afghanistan, les conflits oubliés et les destins brisés par l'Histoire.</p>
+        </div>
+
+        <div class="bio-text" data-lang="en">
+            <p>Born in <strong>1965 in Renazé</strong> (Mayenne, France), in the slate mining basin of Haut-Anjou, Nicolas Jallot is the son of a deep-shaft slate miner. This heritage profoundly shaped his work, culminating in his documentary and book about the "gueules bleues" (blue-faced miners, 2023-2024).</p>
+            <p>A journalist since the early 1990s, he contributed to <strong>Le Point</strong>, <strong>VSD</strong>, and <strong>Amnesty International Chronicle</strong>, before becoming head of foreign news at <strong>France Soir</strong> (1997-2001).</p>
+            <p>In 2001, mentored by <strong>Christophe de Ponfilly</strong>, he left daily journalism to devote himself to documentary filmmaking. Since then, he has directed over twenty films for <strong>France 2, France 3, France 5, Arte, LCP, M6</strong>.</p>
+            <p>Author of ten books, his work spans Soviet history, espionage, Afghanistan, forgotten conflicts, and lives shattered by History.</p>
+        </div>
+
+        <div class="themes">
+            <span class="theme-tag" data-lang="fr">URSS &amp; Russie</span>
+            <span class="theme-tag" data-lang="en">USSR &amp; Russia</span>
+            <span class="theme-tag" data-lang="fr">Espionnage</span>
+            <span class="theme-tag" data-lang="en">Espionage</span>
+            <span class="theme-tag">Afghanistan</span>
+            <span class="theme-tag" data-lang="fr">Guerre froide</span>
+            <span class="theme-tag" data-lang="en">Cold War</span>
+            <span class="theme-tag" data-lang="fr">Droits de l'homme</span>
+            <span class="theme-tag" data-lang="en">Human rights</span>
+            <span class="theme-tag" data-lang="fr">Géopolitique</span>
+            <span class="theme-tag" data-lang="en">Geopolitics</span>
+            <span class="theme-tag" data-lang="fr">Patrimoine minier</span>
+            <span class="theme-tag" data-lang="en">Mining heritage</span>
+            <span class="theme-tag" data-lang="fr">Seconde Guerre mondiale</span>
+            <span class="theme-tag" data-lang="en">World War II</span>
+        </div>
+    </div>
+</section>
+
+<!-- Books -->
+<section id="books">
+    <div class="container">
+        <h2 data-lang="fr">Bibliographie</h2>
+        <h2 data-lang="en">Bibliography</h2>
+        <p class="section-lead" data-lang="fr">10 ouvrages publiés (1995–2024)</p>
+        <p class="section-lead" data-lang="en">10 published works (1995–2024)</p>
+
+        <div class="timeline-item">
+            <div class="timeline-year">2024</div>
+            <div class="timeline-title">Au pays des gueules bleues — L'histoire des ardoisiers-mineurs</div>
+            <div class="timeline-meta" data-lang="fr">Éditions Ouest-France &middot; avec Julien Derouet</div>
+            <div class="timeline-meta" data-lang="en">Éditions Ouest-France &middot; with Julien Derouet</div>
+            <div class="timeline-links">
+                <a href="https://www.amazon.fr/dp/2737389941" target="_blank" rel="noopener">Amazon</a>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-year">2018</div>
+            <div class="timeline-title">Futbol — Le ballon rond de Staline à Poutine, une arme politique</div>
+            <div class="timeline-meta" data-lang="fr">Allary Éditions &middot; avec Régis Genté</div>
+            <div class="timeline-meta" data-lang="en">Allary Éditions &middot; with Régis Genté</div>
+            <div class="timeline-links">
+                <a href="https://www.amazon.fr/dp/2370731702" target="_blank" rel="noopener">Amazon</a>
+                <a href="https://allary-editions.fr/products/regis-gente-nicolas-jallot-futbol" target="_blank" rel="noopener">Allary</a>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-year">2011</div>
+            <div class="timeline-title">Viktor Orekhov — Un dissident au KGB</div>
+            <div class="timeline-meta">Stock</div>
+            <div class="timeline-links">
+                <a href="https://www.editions-stock.fr/auteur/nicolas-jallot/" target="_blank" rel="noopener">Stock</a>
+                <a href="https://www.amazon.fr/Viktor-Orekhov-dissident-au-KGB/dp/2234070317" target="_blank" rel="noopener">Amazon</a>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-year">2007</div>
+            <div class="timeline-title">Manipulation de l'opinion — Ce sont les sondages qui le disent…</div>
+            <div class="timeline-meta">Stock</div>
+            <div class="timeline-links">
+                <a href="https://www.amazon.fr/dp/2234060281" target="_blank" rel="noopener">Amazon</a>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-year">2005</div>
+            <div class="timeline-title">Chevardnadze — Le Renard blanc du Caucase</div>
+            <div class="timeline-meta">Belfond</div>
+            <div class="timeline-links">
+                <a href="https://www.amazon.fr/dp/2714440479" target="_blank" rel="noopener">Amazon</a>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-year">2004</div>
+            <div class="timeline-title">Ma vie volée — 57 ans sans voir la France</div>
+            <div class="timeline-meta" data-lang="fr">Belfond &middot; récit présenté par N. Jallot (Renée Villancher)</div>
+            <div class="timeline-meta" data-lang="en">Belfond &middot; presented by N. Jallot (Renée Villancher)</div>
+            <div class="timeline-links">
+                <a href="https://www.amazon.fr/dp/2714440657" target="_blank" rel="noopener">Amazon</a>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-year">2003</div>
+            <div class="timeline-title">Piégés par Staline — Des milliers de citoyens français derrière le rideau de fer</div>
+            <div class="timeline-meta" data-lang="fr">Belfond &middot; avec Nikita Krivochéine &middot; poche : Pocket, 2004</div>
+            <div class="timeline-meta" data-lang="en">Belfond &middot; with Nikita Krivochéine &middot; paperback: Pocket, 2004</div>
+            <div class="timeline-links">
+                <a href="https://www.amazon.fr/dp/2714439799" target="_blank" rel="noopener">Amazon</a>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-year">1999</div>
+            <div class="timeline-title">Ces hommes qui ont fait tomber le Mur — De Varsovie à Moscou</div>
+            <div class="timeline-meta" data-lang="fr">Éditions de l'Atelier</div>
+            <div class="timeline-meta" data-lang="en">Éditions de l'Atelier</div>
+            <div class="timeline-links">
+                <a href="https://www.amazon.fr/dp/2708234676" target="_blank" rel="noopener">Amazon</a>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-year">1997</div>
+            <div class="timeline-title">La faucille et la seringue — Génération mafia, au cœur de l'ex-URSS</div>
+            <div class="timeline-meta" data-lang="fr">Éditions du Félin &middot; Prix du Centre National du Livre</div>
+            <div class="timeline-meta" data-lang="en">Éditions du Félin &middot; Centre National du Livre Award</div>
+            <div class="timeline-links">
+                <a href="https://www.amazon.fr/dp/2866452577" target="_blank" rel="noopener">Amazon</a>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-year">1995</div>
+            <div class="timeline-title">Haïti — Dix ans d'histoire secrète</div>
+            <div class="timeline-meta" data-lang="fr">Éditions du Félin &middot; avec Laurent Lesage</div>
+            <div class="timeline-meta" data-lang="en">Éditions du Félin &middot; with Laurent Lesage</div>
+            <div class="timeline-links">
+                <a href="https://www.amazon.fr/dp/2866452100" target="_blank" rel="noopener">Amazon</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Films -->
+<section id="films">
+    <div class="container">
+        <h2 data-lang="fr">Filmographie</h2>
+        <h2 data-lang="en">Filmography</h2>
+        <p class="section-lead" data-lang="fr">Plus de 24 documentaires pour la télévision française et internationale</p>
+        <p class="section-lead" data-lang="en">Over 24 documentaries for French and international television</p>
+
+        <div class="film-grid">
+
+            <div class="film-card">
+                <div class="film-info">
+                    <div class="film-title">L'histoire vraie du tatoueur d'Auschwitz</div>
+                    <div class="film-meta">M6 &middot; Roche Productions &middot; 65 min</div>
+                </div>
+                <div class="film-year">2025</div>
+            </div>
+
+            <div class="film-card">
+                <div class="film-info">
+                    <div class="film-title">Le Dernier Combat des gueules bleues</div>
+                    <div class="film-meta">France 3 &middot; 52 min</div>
+                </div>
+                <div class="film-year">2023</div>
+            </div>
+
+            <div class="film-card">
+                <div class="film-info">
+                    <div class="film-title">Liban 1982, radiographie d'un massacre</div>
+                    <div class="film-meta">55 min</div>
+                </div>
+                <div class="film-year">2023</div>
+            </div>
+
+            <div class="film-card">
+                <div class="film-info">
+                    <div class="film-title">Massoud, l'héritage</div>
+                    <div class="film-meta">104 &amp; 90 min</div>
+                </div>
+                <div class="film-year">2021</div>
+            </div>
+
+            <div class="film-card">
+                <div class="film-info">
+                    <div class="film-title">11 Septembre, l'avertissement du Commandant Massoud</div>
+                    <div class="film-meta">52 min</div>
+                </div>
+                <div class="film-year">2020</div>
+            </div>
+
+            <div class="film-card">
+                <div class="film-info">
+                    <div class="film-title">Afghanistan, le tombeau de l'URSS</div>
+                    <div class="film-meta">53 min</div>
+                </div>
+                <div class="film-year">2019</div>
+            </div>
+
+            <div class="film-card">
+                <div class="film-info">
+                    <div class="film-title">Papa Doc, l'Oncle Sam et les Tontons Macoutes</div>
+                    <div class="film-meta" data-lang="fr">France Télévisions &middot; co-réal. Émile Rabaté &middot; 90 &amp; 104 min</div>
+                    <div class="film-meta" data-lang="en">France Télévisions &middot; co-dir. Émile Rabaté &middot; 90 &amp; 104 min</div>
+                </div>
+                <div class="film-year">2019</div>
+            </div>
+
+            <div class="film-card">
+                <div class="film-info">
+                    <div class="film-title">Afghanistan, l'héritage des French Doctors</div>
+                    <div class="film-meta">France 2 &middot; 68 min</div>
+                </div>
+                <div class="film-year">2018</div>
+            </div>
+
+            <div class="film-card">
+                <div class="film-info">
+                    <div class="film-title">Le III<sup>e</sup> Reich n'aura pas la bombe</div>
+                    <div class="film-meta">LCP &middot; 52 min</div>
+                </div>
+                <div class="film-year">2018</div>
+            </div>
+
+            <div class="film-card">
+                <div class="film-info">
+                    <div class="film-title">L'Île de lumière — Quand la France sauve les boat people</div>
+                    <div class="film-meta">France 2 (Infrarouge) &middot; 65 min</div>
+                </div>
+                <div class="film-year">2017</div>
+            </div>
+
+            <div class="film-card">
+                <div class="film-info">
+                    <div class="film-title">Football, arme du KGB</div>
+                    <div class="film-meta">52 min</div>
+                </div>
+                <div class="film-year">2017</div>
+            </div>
+
+            <div class="film-card">
+                <div class="film-info">
+                    <div class="film-title">De Gaulle chez les Soviets</div>
+                    <div class="film-meta">53 min</div>
+                </div>
+                <div class="film-year">2016</div>
+            </div>
+
+            <div class="film-card">
+                <div class="film-info">
+                    <div class="film-title">De Rouen à Hiroshima</div>
+                    <div class="film-meta">52 min</div>
+                </div>
+                <div class="film-year">2015</div>
+            </div>
+
+            <div class="film-card">
+                <div class="film-info">
+                    <div class="film-title">Génocide arménien, le spectre de 1915</div>
+                    <div class="film-meta">RTBF, France 5 &middot; 52 min</div>
+                </div>
+                <div class="film-year">2014</div>
+            </div>
+
+            <div class="film-card">
+                <div class="film-info">
+                    <div class="film-title">Le Dernier Secret de Yalta</div>
+                    <div class="film-meta">RTS, France 5 &middot; 52 min</div>
+                </div>
+                <div class="film-year">2013</div>
+            </div>
+
+            <div class="film-card">
+                <div class="film-info">
+                    <div class="film-title">Un espion à Pékin</div>
+                    <div class="film-meta">Arte &middot; 52 min</div>
+                </div>
+                <div class="film-year">2012</div>
+            </div>
+
+            <div class="film-card">
+                <div class="film-info">
+                    <div class="film-title">Penkovsky, espion pour la paix</div>
+                    <div class="film-meta">France 5 &middot; 53 min</div>
+                </div>
+                <div class="film-year">2011</div>
+            </div>
+
+            <div class="film-card">
+                <div class="film-info">
+                    <div class="film-title">Le Dissident du KGB</div>
+                    <div class="film-meta">Arte &middot; 73 &amp; 52 min</div>
+                </div>
+                <div class="film-year">2009</div>
+            </div>
+
+            <div class="film-card">
+                <div class="film-info">
+                    <div class="film-title">Sondages, je t'aime, moi non plus</div>
+                    <div class="film-meta">52 min</div>
+                </div>
+                <div class="film-year">2007</div>
+            </div>
+
+            <div class="film-card">
+                <div class="film-info">
+                    <div class="film-title">En Immersion… au Mont Blanc</div>
+                    <div class="film-meta" data-lang="fr">France 2 &middot; série 5×42 min</div>
+                    <div class="film-meta" data-lang="en">France 2 &middot; series 5×42 min</div>
+                </div>
+                <div class="film-year">2005</div>
+            </div>
+
+            <div class="film-card">
+                <div class="film-info">
+                    <div class="film-title">Une vie volée, 57 ans sans voir la France</div>
+                    <div class="film-meta">Planète, France 3 &middot; 52 min</div>
+                </div>
+                <div class="film-year">2004</div>
+            </div>
+
+            <div class="film-card">
+                <div class="film-info">
+                    <div class="film-title">Piégés par Staline</div>
+                    <div class="film-meta" data-lang="fr">France 5, France 3 &middot; co-réal. Xavier Deleu &middot; 52 min</div>
+                    <div class="film-meta" data-lang="en">France 5, France 3 &middot; co-dir. Xavier Deleu &middot; 52 min</div>
+                </div>
+                <div class="film-year">2003</div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Awards -->
+<section id="awards">
+    <div class="container">
+        <h2 data-lang="fr">Prix &amp; Distinctions</h2>
+        <h2 data-lang="en">Awards &amp; Recognitions</h2>
+
+        <div class="award-item">
+            <span class="award-year">2023</span>
+            <div>
+                <div class="award-name" data-lang="fr">Sélection officielle — Festival Int. du Film d'Histoire de Pessac</div>
+                <div class="award-name" data-lang="en">Official Selection — Pessac Int. History Film Festival</div>
+                <div class="award-work">Liban 1982, radiographie d'un massacre</div>
+            </div>
+        </div>
+
+        <div class="award-item">
+            <span class="award-year">2022</span>
+            <div>
+                <div class="award-name" data-lang="fr">Meilleur documentaire — FFIR (Râșnov, Roumanie)</div>
+                <div class="award-name" data-lang="en">Best Documentary — FFIR (Râșnov, Romania)</div>
+                <div class="award-work">Massoud, l'héritage</div>
+            </div>
+        </div>
+
+        <div class="award-item">
+            <span class="award-year">2022</span>
+            <div>
+                <div class="award-name" data-lang="fr">Prix du meilleur long métrage — FIFHM (Montréal)</div>
+                <div class="award-name" data-lang="en">Best Feature Film — FIFHM (Montréal)</div>
+                <div class="award-work">Massoud, l'héritage</div>
+            </div>
+        </div>
+
+        <div class="award-item">
+            <span class="award-year">2022</span>
+            <div>
+                <div class="award-name" data-lang="fr">Sélection officielle — FIPADOC</div>
+                <div class="award-name" data-lang="en">Official Selection — FIPADOC</div>
+                <div class="award-work">Massoud, l'héritage</div>
+            </div>
+        </div>
+
+        <div class="award-item">
+            <span class="award-year">2021</span>
+            <div>
+                <div class="award-name" data-lang="fr">Prix du Panorama du Documentaire — Festival de Pessac</div>
+                <div class="award-name" data-lang="en">Documentary Panorama Award — Pessac Festival</div>
+                <div class="award-work">Massoud, l'héritage</div>
+            </div>
+        </div>
+
+        <div class="award-item">
+            <span class="award-year">2019</span>
+            <div>
+                <div class="award-name" data-lang="fr">Grand Prix du Jury — Écrans de la Mer</div>
+                <div class="award-name" data-lang="en">Jury Grand Prize — Écrans de la Mer</div>
+                <div class="award-work">L'Île de lumière</div>
+            </div>
+        </div>
+
+        <div class="award-item">
+            <span class="award-year">2015</span>
+            <div>
+                <div class="award-name" data-lang="fr">Sélection officielle — FIFDH Genève</div>
+                <div class="award-name" data-lang="en">Official Selection — FIFDH Geneva</div>
+                <div class="award-work">Génocide arménien, le spectre de 1915</div>
+            </div>
+        </div>
+
+        <div class="award-item">
+            <span class="award-year">2014</span>
+            <div>
+                <div class="award-name" data-lang="fr">Compétition officielle — FIGRA (Terre(s) d'Histoire)</div>
+                <div class="award-name" data-lang="en">Official Competition — FIGRA (Terre(s) d'Histoire)</div>
+                <div class="award-work">Le Dernier Secret de Yalta</div>
+            </div>
+        </div>
+
+        <div class="award-item">
+            <span class="award-year">2010</span>
+            <div>
+                <div class="award-name" data-lang="fr">Sélection — FIPA &amp; Festival de Pessac</div>
+                <div class="award-name" data-lang="en">Selection — FIPA &amp; Pessac Festival</div>
+                <div class="award-work">Le Dissident du KGB</div>
+            </div>
+        </div>
+
+        <div class="award-item">
+            <span class="award-year">2004</span>
+            <div>
+                <div class="award-name" data-lang="fr">Prix du Récit Biographique + Prix Spécial du Jury</div>
+                <div class="award-name" data-lang="en">Biographical Narrative Award + Special Jury Prize</div>
+                <div class="award-work">Ma vie volée</div>
+            </div>
+        </div>
+
+        <div class="award-item">
+            <span class="award-year">~1997</span>
+            <div>
+                <div class="award-name" data-lang="fr">Bourse du Centre National du Livre</div>
+                <div class="award-name" data-lang="en">Centre National du Livre Grant</div>
+                <div class="award-work">La faucille et la seringue</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Links -->
+<section id="links">
+    <div class="container">
+        <h2 data-lang="fr">En ligne</h2>
+        <h2 data-lang="en">Online</h2>
+        <p class="section-lead" data-lang="fr">Retrouvez Nicolas Jallot sur ces plateformes</p>
+        <p class="section-lead" data-lang="en">Find Nicolas Jallot on these platforms</p>
+
+        <div class="links-grid">
+            <a class="link-card" href="https://fr.linkedin.com/in/nicolas-jallot-8870a3130" target="_blank" rel="noopener">
+                <div class="link-icon">in</div>
+                <div>
+                    <div class="link-label">LinkedIn</div>
+                    <div class="link-sub">Profil professionnel</div>
+                </div>
+            </a>
+
+            <a class="link-card" href="https://www.imdb.com/name/nm3708784/" target="_blank" rel="noopener">
+                <div class="link-icon">IMDb</div>
+                <div>
+                    <div class="link-label">IMDb</div>
+                    <div class="link-sub" data-lang="fr">Filmographie complète</div>
+                    <div class="link-sub" data-lang="en">Full filmography</div>
+                </div>
+            </a>
+
+            <a class="link-card" href="https://www.babelio.com/auteur/Nicolas-Jallot/284712" target="_blank" rel="noopener">
+                <div class="link-icon">B</div>
+                <div>
+                    <div class="link-label">Babelio</div>
+                    <div class="link-sub" data-lang="fr">Critiques &amp; lectures</div>
+                    <div class="link-sub" data-lang="en">Reviews &amp; readings</div>
+                </div>
+            </a>
+
+            <a class="link-card" href="https://www.amazon.fr/Livres-Nicolas-JALLOT/s?rh=n:301061,p_27:Nicolas%2BJALLOT" target="_blank" rel="noopener">
+                <div class="link-icon">A</div>
+                <div>
+                    <div class="link-label">Amazon</div>
+                    <div class="link-sub" data-lang="fr">Tous les livres</div>
+                    <div class="link-sub" data-lang="en">All books</div>
+                </div>
+            </a>
+
+            <a class="link-card" href="https://www.editions-stock.fr/auteur/nicolas-jallot/" target="_blank" rel="noopener">
+                <div class="link-icon">S</div>
+                <div>
+                    <div class="link-label">Éditions Stock</div>
+                    <div class="link-sub" data-lang="fr">Page auteur</div>
+                    <div class="link-sub" data-lang="en">Author page</div>
+                </div>
+            </a>
+
+            <a class="link-card" href="https://www.ladybirdsfilms.fr/nicolas-jallot/" target="_blank" rel="noopener">
+                <div class="link-icon">LB</div>
+                <div>
+                    <div class="link-label">Ladybirds Films</div>
+                    <div class="link-sub" data-lang="fr">Société de production</div>
+                    <div class="link-sub" data-lang="en">Production company</div>
+                </div>
+            </a>
+
+            <a class="link-card" href="https://www.radiofrance.fr/personne-nicolas-jallot.html" target="_blank" rel="noopener">
+                <div class="link-icon">RF</div>
+                <div>
+                    <div class="link-label">Radio France</div>
+                    <div class="link-sub" data-lang="fr">Podcasts &amp; émissions</div>
+                    <div class="link-sub" data-lang="en">Podcasts &amp; shows</div>
+                </div>
+            </a>
+
+            <a class="link-card" href="https://www.film-documentaire.fr/4DACTION/w_liste_generique/C_31181_F" target="_blank" rel="noopener">
+                <div class="link-icon">FD</div>
+                <div>
+                    <div class="link-label">film-documentaire.fr</div>
+                    <div class="link-sub" data-lang="fr">Base documentaire</div>
+                    <div class="link-sub" data-lang="en">Documentary database</div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+    <div class="container">
+        <h2>Contact</h2>
+
+        <div class="contact-info">
+            <div class="contact-method">
+                <h3 data-lang="fr">Production</h3>
+                <h3 data-lang="en">Production Company</h3>
+                <p><strong>Ladybirds Films</strong> — Paris<br>
+                <a href="https://www.ladybirdsfilms.fr/contact/" target="_blank" rel="noopener" data-lang="fr">Formulaire de contact →</a>
+                <a href="https://www.ladybirdsfilms.fr/contact/" target="_blank" rel="noopener" data-lang="en">Contact form →</a>
+                </p>
+            </div>
+            <div class="contact-method">
+                <h3 data-lang="fr">Professionnel</h3>
+                <h3 data-lang="en">Professional</h3>
+                <p><a href="https://fr.linkedin.com/in/nicolas-jallot-8870a3130" target="_blank" rel="noopener">LinkedIn</a></p>
+            </div>
+            <div class="contact-method">
+                <h3 data-lang="fr">Éditeurs</h3>
+                <h3 data-lang="en">Publishers</h3>
+                <p data-lang="fr">
+                    <a href="https://www.editions-stock.fr/auteur/nicolas-jallot/" target="_blank" rel="noopener">Éditions Stock</a> &middot;
+                    <a href="https://allary-editions.fr" target="_blank" rel="noopener">Allary Éditions</a> &middot;
+                    Éditions Ouest-France
+                </p>
+                <p data-lang="en">
+                    <a href="https://www.editions-stock.fr/auteur/nicolas-jallot/" target="_blank" rel="noopener">Éditions Stock</a> &middot;
+                    <a href="https://allary-editions.fr" target="_blank" rel="noopener">Allary Éditions</a> &middot;
+                    Éditions Ouest-France
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2025 Nicolas Jallot. <span data-lang="fr">Tous droits réservés.</span><span data-lang="en">All rights reserved.</span></p>
+</footer>
+
+<script>
+function setLang(lang) {
+    document.documentElement.lang = lang;
+    document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+</script>
+
+</body>
+</html>
