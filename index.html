@@ -183,12 +183,14 @@
         .career-desc strong { color: var(--ink); font-weight: 500; }
 
         /* Timeline items (books) */
-        .timeline-item { border-left: 2px solid var(--border); padding: 0 0 32px 24px; position: relative; }
+        .timeline-item { border-left: 2px solid var(--border); padding: 0 0 32px 24px; position: relative; display: flex; gap: 18px; }
         .timeline-item:last-child { padding-bottom: 0; }
         .timeline-item::before {
             content: ''; position: absolute; left: -5px; top: 6px;
             width: 8px; height: 8px; background: var(--accent); border-radius: 50%;
         }
+        .book-cover { width: 80px; height: 120px; object-fit: cover; border-radius: 4px; border: 1px solid var(--border); flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .timeline-info { flex: 1; min-width: 0; }
         .timeline-year { font-size: 0.8rem; font-weight: 600; color: var(--accent); letter-spacing: 0.05em; margin-bottom: 4px; }
         .timeline-title { font-family: 'Libre Baskerville', serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 4px; }
         .timeline-meta { font-size: 0.88rem; color: var(--muted); margin-bottom: 6px; }
@@ -204,8 +206,10 @@
         .film-grid { display: grid; gap: 12px; }
         .film-card {
             background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px;
-            padding: 18px 22px;
+            padding: 18px 22px; display: flex; gap: 16px;
         }
+        .film-thumb { width: 120px; height: 80px; object-fit: cover; border-radius: 4px; border: 1px solid var(--border); flex-shrink: 0; }
+        .film-info { flex: 1; min-width: 0; }
         .film-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 6px; }
         .film-title { font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 0.95rem; }
         .film-year { font-size: 0.8rem; font-weight: 600; color: var(--accent); white-space: nowrap; }
@@ -272,6 +276,10 @@
             .hero-photo { width: 160px; height: 210px; margin: 0 auto; }
             .hero .stats { justify-content: center; gap: 20px; }
             section { padding: 50px 16px; }
+            .timeline-item { flex-direction: column; gap: 10px; }
+            .book-cover { width: 60px; height: 90px; }
+            .film-card { flex-direction: column; gap: 10px; }
+            .film-thumb { width: 100%; height: 140px; }
             .film-header { flex-direction: column; gap: 4px; }
             .award-item { flex-direction: column; gap: 4px; }
             .lang-toggle { top: 12px; right: 12px; }
@@ -388,6 +396,8 @@
         <p class="section-lead" data-lang="en">10 published works (1995–2024)</p>
 
         <div class="timeline-item">
+            <img class="book-cover" src="img/books/01_gueules_bleues.jpg" alt="Au pays des gueules bleues" loading="lazy" width="80" height="120">
+            <div class="timeline-info">
             <div class="timeline-year">2024</div>
             <div class="timeline-title">Au pays des gueules bleues — L'histoire des ardoisiers-mineurs</div>
             <div class="timeline-meta" data-lang="fr">Éditions Ouest-France &middot; avec Julien Derouet</div>
@@ -398,9 +408,12 @@
                 <a href="https://www.decitre.fr/livres/au-pays-des-gueules-bleues-9782737389948.html" target="_blank" rel="noopener">Decitre</a>
                 <a href="https://www.babelio.com/livres/Derouet-Au-pays-des-gueules-bleues/1594560" target="_blank" rel="noopener">Babelio</a>
             </div>
+            </div>
         </div>
 
         <div class="timeline-item">
+            <img class="book-cover" src="img/books/02_futbol.jpg" alt="Futbol" loading="lazy" width="80" height="120">
+            <div class="timeline-info">
             <div class="timeline-year">2018</div>
             <div class="timeline-title">Futbol — Le ballon rond de Staline à Poutine, une arme politique</div>
             <div class="timeline-meta" data-lang="fr">Allary Éditions &middot; avec Régis Genté</div>
@@ -411,9 +424,12 @@
                 <a href="https://www.decitre.fr/livres/futbol-9782370731708.html" target="_blank" rel="noopener">Decitre</a>
                 <a href="https://www.babelio.com/livres/Gente-Futbol--Le-ballon-rond-de-Staline-a-Poutine/1049019" target="_blank" rel="noopener">Babelio</a>
             </div>
+            </div>
         </div>
 
         <div class="timeline-item">
+            <img class="book-cover" src="img/books/03_viktor_orekhov.jpg" alt="Viktor Orekhov" loading="lazy" width="80" height="120">
+            <div class="timeline-info">
             <div class="timeline-year">2011</div>
             <div class="timeline-title">Viktor Orekhov — Un dissident au KGB</div>
             <div class="timeline-meta">Stock</div>
@@ -422,9 +438,12 @@
                 <a href="https://www.editions-stock.fr/livre/viktor-orekhov-9782234070318/" target="_blank" rel="noopener">Stock</a>
                 <a href="https://www.babelio.com/livres/Jallot-Viktor-Orekhov-Un-dissident-au-KGB/531188" target="_blank" rel="noopener">Babelio</a>
             </div>
+            </div>
         </div>
 
         <div class="timeline-item">
+            <img class="book-cover" src="img/books/04_manipulation.jpg" alt="Manipulation de l'opinion" loading="lazy" width="80" height="120">
+            <div class="timeline-info">
             <div class="timeline-year">2007</div>
             <div class="timeline-title">Manipulation de l'opinion — Ce sont les sondages qui le disent…</div>
             <div class="timeline-meta">Stock</div>
@@ -433,9 +452,12 @@
                 <a href="https://www.editions-stock.fr/livre/manipulation-de-lopinion-9782234060289/" target="_blank" rel="noopener">Stock</a>
                 <a href="https://www.mollat.com/livres/542623/nicolas-jallot-manipulation-de-l-opinion-ce-sont-les-sondages-qui-le-disent" target="_blank" rel="noopener">Mollat</a>
             </div>
+            </div>
         </div>
 
         <div class="timeline-item">
+            <img class="book-cover" src="img/books/05_chevardnadze.jpg" alt="Chevardnadze" loading="lazy" width="80" height="120">
+            <div class="timeline-info">
             <div class="timeline-year">2005</div>
             <div class="timeline-title">Chevardnadze — Le Renard blanc du Caucase</div>
             <div class="timeline-meta">Belfond</div>
@@ -444,9 +466,12 @@
                 <a href="https://www.decitre.fr/livres/chevardnadze-9782714440471.html" target="_blank" rel="noopener">Decitre</a>
                 <a href="https://www.babelio.com/livres/Jallot-Chevardnadze--le-Renard-blanc-du-Caucase/796963" target="_blank" rel="noopener">Babelio</a>
             </div>
+            </div>
         </div>
 
         <div class="timeline-item">
+            <img class="book-cover" src="img/books/06_ma_vie_volee.jpg" alt="Ma vie volée" loading="lazy" width="80" height="120">
+            <div class="timeline-info">
             <div class="timeline-year">2004</div>
             <div class="timeline-title">Ma vie volée — 57 ans sans voir la France</div>
             <div class="timeline-meta" data-lang="fr">Belfond &middot; récit présenté par N. Jallot (Renée Villancher) &middot; <strong>Prix du Récit Biographique 2004</strong></div>
@@ -456,9 +481,12 @@
                 <a href="https://www.fnac.com/a1495742/Renee-Villancher-Ma-vie-volee" target="_blank" rel="noopener">Fnac</a>
                 <a href="https://www.babelio.com/livres/Villancher-Ma-vie-volee--57-ans-sans-voir-la-France/131653" target="_blank" rel="noopener">Babelio</a>
             </div>
+            </div>
         </div>
 
         <div class="timeline-item">
+            <img class="book-cover" src="img/books/07_pieges_staline.jpg" alt="Piégés par Staline" loading="lazy" width="80" height="120">
+            <div class="timeline-info">
             <div class="timeline-year">2003</div>
             <div class="timeline-title">Piégés par Staline — Des milliers de citoyens français derrière le rideau de fer</div>
             <div class="timeline-meta" data-lang="fr">Belfond &middot; avec Nikita Krivochéine &middot; poche : Pocket, 2004</div>
@@ -468,9 +496,12 @@
                 <a href="https://www.decitre.fr/livres/pieges-par-staline-9782714439796.html" target="_blank" rel="noopener">Decitre</a>
                 <a href="https://www.babelio.com/livres/Jallot-Pieges-par-Staline-Des-milliers-de-citoyens-franc/642889" target="_blank" rel="noopener">Babelio</a>
             </div>
+            </div>
         </div>
 
         <div class="timeline-item">
+            <img class="book-cover" src="img/books/08_ces_hommes_mur.jpg" alt="Ces hommes qui ont fait tomber le Mur" loading="lazy" width="80" height="120">
+            <div class="timeline-info">
             <div class="timeline-year">1999</div>
             <div class="timeline-title">Ces hommes qui ont fait tomber le Mur — De Varsovie à Moscou</div>
             <div class="timeline-meta" data-lang="fr">Éditions de l'Atelier</div>
@@ -478,9 +509,12 @@
             <div class="timeline-links">
                 <a href="https://www.decitre.fr/livres/ces-hommes-qui-ont-fait-tomber-le-mur-9782708234673.html" target="_blank" rel="noopener">Decitre</a>
             </div>
+            </div>
         </div>
 
         <div class="timeline-item">
+            <img class="book-cover" src="img/books/09_faucille_seringue.jpg" alt="La faucille et la seringue" loading="lazy" width="80" height="120">
+            <div class="timeline-info">
             <div class="timeline-year">1997</div>
             <div class="timeline-title">La faucille et la seringue — Génération mafia, au cœur de l'ex-URSS</div>
             <div class="timeline-meta" data-lang="fr">Éditions du Félin &middot; <strong>Lauréat du Centre National du Livre</strong></div>
@@ -489,9 +523,12 @@
                 <a href="https://www.amazon.fr/faucille-seringue-G%C3%A9n%C3%A9ration-lex-URSS-1991-1997/dp/2866452577" target="_blank" rel="noopener">Amazon</a>
                 <a href="https://www.decitre.fr/livres/la-faucille-et-la-seringue-9782866452575.html" target="_blank" rel="noopener">Decitre</a>
             </div>
+            </div>
         </div>
 
         <div class="timeline-item">
+            <img class="book-cover" src="img/books/10_haiti.jpg" alt="Haïti — Dix ans d'histoire secrète" loading="lazy" width="80" height="120">
+            <div class="timeline-info">
             <div class="timeline-year">1995</div>
             <div class="timeline-title">Haïti — Dix ans d'histoire secrète</div>
             <div class="timeline-meta" data-lang="fr">Éditions du Félin &middot; avec Laurent Lesage</div>
@@ -500,6 +537,7 @@
                 <a href="https://www.amazon.fr/Ha%C3%AFti-Dix-ans-dhistoire-secr%C3%A8te/dp/2866452100" target="_blank" rel="noopener">Amazon</a>
                 <a href="https://www.fnac.com/a997316/JALLOT-LESAGE-Haiti-dix-ans-d-histoire-secrete" target="_blank" rel="noopener">Fnac</a>
                 <a href="https://www.babelio.com/livres/Jallot-Haiti--Dix-ans-dhistoire-secrete/610067" target="_blank" rel="noopener">Babelio</a>
+            </div>
             </div>
         </div>
     </div>
@@ -516,15 +554,19 @@
         <div class="film-grid">
 
             <div class="film-card">
+                <img class="film-thumb" src="img/films/01_tatoueur_auschwitz.jpg" alt="L'histoire vraie du tatoueur d'Auschwitz" loading="lazy">
+                <div class="film-info">
                 <div class="film-header"><div class="film-title">L'histoire vraie du tatoueur d'Auschwitz</div><div class="film-year">2025</div></div>
                 <div class="film-meta">M6 &middot; Roche Productions &middot; 52 min</div>
                 <div class="film-links">
                     <a href="https://www.fondationshoah.org/memoire/lhistoire-vraie-du-tatoueur-dauschwitz-nicolas-jallot" target="_blank" rel="noopener">Fondation Shoah</a>
                     <a href="https://www.senscritique.com/film/l_histoire_vraie_du_tatoueur_d_auschwitz/105720599" target="_blank" rel="noopener">SensCritique</a>
                 </div>
-            </div>
+            </div></div>
 
             <div class="film-card">
+                <img class="film-thumb" src="img/films/02_gueules_bleues.jpg" alt="Le Dernier Combat des gueules bleues" loading="lazy">
+                <div class="film-info">
                 <div class="film-header"><div class="film-title">Le Dernier Combat des gueules bleues</div><div class="film-year">2024</div></div>
                 <div class="film-meta">France 3 &middot; 52 min</div>
                 <div class="film-links">
@@ -532,9 +574,11 @@
                     <a href="https://www.imdb.com/title/tt32066077/" target="_blank" rel="noopener">IMDb</a>
                     <a href="https://www.scam.fr/actualites-ressources/projection-le-dernier-combat-des-gueules-bleues-de-nicolas-jallot-le-12-fevrier-2024/" target="_blank" rel="noopener">SCAM</a>
                 </div>
-            </div>
+            </div></div>
 
             <div class="film-card">
+                <img class="film-thumb" src="img/films/03_liban_1982.jpg" alt="Liban 1982, radiographie d'un massacre" loading="lazy">
+                <div class="film-info">
                 <div class="film-header"><div class="film-title">Liban 1982, radiographie d'un massacre</div><div class="film-year">2023</div></div>
                 <div class="film-meta">BBC &middot; LCP &middot; 55 min</div>
                 <div class="film-links">
@@ -542,9 +586,11 @@
                     <a href="https://lcp.fr/programmes/liban-1982-radiographie-d-un-massacre-351167" target="_blank" rel="noopener">LCP</a>
                     <a href="https://www.figra.fr/liban-1982-radiographie-dun-massacre/" target="_blank" rel="noopener">FIGRA</a>
                 </div>
-            </div>
+            </div></div>
 
             <div class="film-card">
+                <img class="film-thumb" src="img/films/04_massoud_heritage.jpg" alt="Massoud, l'héritage" loading="lazy">
+                <div class="film-info">
                 <div class="film-header"><div class="film-title">Massoud, l'héritage</div><div class="film-year">2021</div></div>
                 <div class="film-meta" data-lang="fr">Histoire TV &middot; 93 min &middot; <strong>Prix Pessac 2021, FIFHM Montréal 2022, FFIR Râșnov 2022</strong></div>
                 <div class="film-meta" data-lang="en">Histoire TV &middot; 93 min &middot; <strong>Pessac Award 2021, FIFHM Montréal 2022, FFIR Râșnov 2022</strong></div>
@@ -554,18 +600,22 @@
                     <a href="https://www.fipadoc.com/en/film/massoud-lheritage" target="_blank" rel="noopener">FIPADOC</a>
                     <a href="https://www.editionsmontparnasse.fr/p1962/Massoud-L-Heritage-11-septembre-l-avertissement-de-Massoud-DVD" target="_blank" rel="noopener">DVD</a>
                 </div>
-            </div>
+            </div></div>
 
             <div class="film-card">
+                <img class="film-thumb" src="img/films/05_11_septembre_massoud.jpg" alt="11 Septembre, l'avertissement du Commandant Massoud" loading="lazy">
+                <div class="film-info">
                 <div class="film-header"><div class="film-title">11 Septembre, l'avertissement du Commandant Massoud</div><div class="film-year">2021</div></div>
                 <div class="film-meta">France 3 &middot; 52 min</div>
                 <div class="film-links">
                     <a href="https://www.imdb.com/title/tt15405264/" target="_blank" rel="noopener">IMDb</a>
                     <a href="https://www.figra.fr/11-septembre-lavertissement-du-commandant-massoud/" target="_blank" rel="noopener">FIGRA</a>
                 </div>
-            </div>
+            </div></div>
 
             <div class="film-card">
+                <img class="film-thumb" src="img/films/06_afghanistan_tombeau.jpg" alt="Afghanistan, le tombeau de l'URSS" loading="lazy">
+                <div class="film-info">
                 <div class="film-header"><div class="film-title">Afghanistan, le tombeau de l'URSS</div><div class="film-year">2019</div></div>
                 <div class="film-meta">LCP &middot; 55 min</div>
                 <div class="film-links">
@@ -573,36 +623,44 @@
                     <a href="https://lcp.fr/programmes/afghanistan-le-tombeau-de-l-urss-112743" target="_blank" rel="noopener">LCP</a>
                     <a href="https://www.figra.fr/afghanistan-le-tombeau-de-lurss/" target="_blank" rel="noopener">FIGRA</a>
                 </div>
-            </div>
+            </div></div>
 
             <div class="film-card">
+                <img class="film-thumb" src="img/films/07_papa_doc.jpg" alt="Papa Doc, l'Oncle Sam et les Tontons Macoutes" loading="lazy">
+                <div class="film-info">
                 <div class="film-header"><div class="film-title">Papa Doc, l'Oncle Sam et les Tontons Macoutes</div><div class="film-year">2019</div></div>
                 <div class="film-meta" data-lang="fr">France 2 (Infrarouge) &middot; co-réal. Émile Rabaté &middot; 104 min</div>
                 <div class="film-meta" data-lang="en">France 2 (Infrarouge) &middot; co-dir. Émile Rabaté &middot; 104 min</div>
                 <div class="film-links">
                     <a href="https://madelen.ina.fr/content/papa-doc-et-les-tontons-macoutes-77771" target="_blank" rel="noopener">INA Madelen</a>
                 </div>
-            </div>
+            </div></div>
 
             <div class="film-card">
+                <img class="film-thumb" src="img/films/08_iiie_reich.jpg" alt="Le III<sup>e</sup> Reich n'aura pas la bombe" loading="lazy">
+                <div class="film-info">
                 <div class="film-header"><div class="film-title">Le III<sup>e</sup> Reich n'aura pas la bombe</div><div class="film-year">2018</div></div>
                 <div class="film-meta">France 5 &middot; LCP &middot; 52 min</div>
                 <div class="film-links">
                     <a href="https://www.primevideo.com/detail/Le-III%C3%A8me-Reich-naura-pas-la-bombe/0HBPCHNB3MH6DZYFCKOQB4EVGW" target="_blank" rel="noopener">Prime Video</a>
                     <a href="https://www.imdb.com/title/tt11413882/" target="_blank" rel="noopener">IMDb</a>
                 </div>
-            </div>
+            </div></div>
 
             <div class="film-card">
+                <img class="film-thumb" src="img/films/09_french_doctors.jpg" alt="Afghanistan, l'héritage des French Doctors" loading="lazy">
+                <div class="film-info">
                 <div class="film-header"><div class="film-title">Afghanistan, l'héritage des French Doctors</div><div class="film-year">2018</div></div>
                 <div class="film-meta">France 2 (Infrarouge) &middot; 68 min</div>
                 <div class="film-links">
                     <a href="https://www.chainedelespoir.org/fr/afghanistan-lheritage-des-french-doctors" target="_blank" rel="noopener">Chaîne de l'Espoir</a>
                     <a href="https://www.imdb.com/title/tt11269380/" target="_blank" rel="noopener">IMDb</a>
                 </div>
-            </div>
+            </div></div>
 
             <div class="film-card">
+                <img class="film-thumb" src="img/films/10_ile_lumiere.jpg" alt="L'Île de lumière — Quand la France sauve les boat people" loading="lazy">
+                <div class="film-info">
                 <div class="film-header"><div class="film-title">L'Île de lumière — Quand la France sauve les boat people</div><div class="film-year">2017</div></div>
                 <div class="film-meta" data-lang="fr">France 2 (Infrarouge) &middot; 65 min &middot; <strong>Grand Prix Écrans de la Mer 2019</strong></div>
                 <div class="film-meta" data-lang="en">France 2 (Infrarouge) &middot; 65 min &middot; <strong>Grand Prix Écrans de la Mer 2019</strong></div>
@@ -611,65 +669,81 @@
                     <a href="https://www.imdb.com/title/tt8137024/" target="_blank" rel="noopener">IMDb</a>
                     <a href="https://madelen.ina.fr/content/lile-de-lumiere-quand-la-france-sauve-les-boat-people-75771" target="_blank" rel="noopener">INA</a>
                 </div>
-            </div>
+            </div></div>
 
             <div class="film-card">
+                <img class="film-thumb" src="img/films/11_football_kgb.jpg" alt="Football, arme du KGB" loading="lazy">
+                <div class="film-info">
                 <div class="film-header"><div class="film-title">Football, arme du KGB</div><div class="film-year">2017</div></div>
                 <div class="film-meta">France 5 &middot; 52 min</div>
                 <div class="film-links">
                     <a href="https://www.dailymotion.com/video/x6m1ar5" target="_blank" rel="noopener">Dailymotion</a>
                 </div>
-            </div>
+            </div></div>
 
             <div class="film-card">
+                <img class="film-thumb" src="img/films/12_aviation_14_18.jpg" alt="Aviation, l'héritage de 14-18" loading="lazy">
+                <div class="film-info">
                 <div class="film-header"><div class="film-title">Aviation, l'héritage de 14-18</div><div class="film-year">2017</div></div>
                 <div class="film-meta">ECPAD &middot; RMC Découverte &middot; LCP &middot; 70 min</div>
                 <div class="film-links">
                     <a href="https://lcp.fr/programmes/aviation-l-heritage-de-14-18-31491" target="_blank" rel="noopener">LCP</a>
                 </div>
-            </div>
+            </div></div>
 
             <div class="film-card">
+                <img class="film-thumb" src="img/films/13_cameraman.jpg" alt="Dans la peau du premier cameraman de guerre" loading="lazy">
+                <div class="film-info">
                 <div class="film-header"><div class="film-title">Dans la peau du premier cameraman de guerre</div><div class="film-year">2016</div></div>
                 <div class="film-meta">MC4 Production &middot; 70 min</div>
-            </div>
+            </div></div>
 
             <div class="film-card">
+                <img class="film-thumb" src="img/films/14_de_gaulle_soviets.jpg" alt="De Gaulle chez les Soviets" loading="lazy">
+                <div class="film-info">
                 <div class="film-header"><div class="film-title">De Gaulle chez les Soviets</div><div class="film-year">2016</div></div>
                 <div class="film-meta">France 3 &middot; 55 min</div>
                 <div class="film-links">
                     <a href="https://www.dailymotion.com/video/x72v6a2" target="_blank" rel="noopener">Dailymotion</a>
                     <a href="https://rdv-histoire.com/edition-2016-partir/film-de-gaulle-chez-les-soviets-de-nicolas-jallot" target="_blank" rel="noopener">Blois</a>
                 </div>
-            </div>
+            </div></div>
 
             <div class="film-card">
+                <img class="film-thumb" src="img/films/15_rouen_hiroshima.jpg" alt="De Rouen à Hiroshima" loading="lazy">
+                <div class="film-info">
                 <div class="film-header"><div class="film-title">De Rouen à Hiroshima</div><div class="film-year">2015</div></div>
                 <div class="film-meta">France 5 &middot; 52 min</div>
                 <div class="film-links">
                     <a href="https://www.imdb.com/title/tt5290934/" target="_blank" rel="noopener">IMDb</a>
                 </div>
-            </div>
+            </div></div>
 
             <div class="film-card">
+                <img class="film-thumb" src="img/films/16_genocide_armenien.jpg" alt="Génocide arménien, le spectre de 1915" loading="lazy">
+                <div class="film-info">
                 <div class="film-header"><div class="film-title">Génocide arménien, le spectre de 1915</div><div class="film-year">2014</div></div>
                 <div class="film-meta">RTBF &middot; France 5 &middot; 52 min</div>
                 <div class="film-links">
                     <a href="https://www.dailymotion.com/video/x5811cp" target="_blank" rel="noopener">Dailymotion</a>
                     <a href="https://www.primevideo.com/detail/G%C3%A9nocide-arm%C3%A9nien-le-spectre-de-1915/0Q1PTW82OQTLE3K4CGV6217RSF" target="_blank" rel="noopener">Prime Video</a>
                 </div>
-            </div>
+            </div></div>
 
             <div class="film-card">
+                <img class="film-thumb" src="img/films/17_secret_yalta.jpg" alt="Le Dernier Secret de Yalta" loading="lazy">
+                <div class="film-info">
                 <div class="film-header"><div class="film-title">Le Dernier Secret de Yalta</div><div class="film-year">2013</div></div>
                 <div class="film-meta">RTS &middot; France 5 &middot; 52 min</div>
                 <div class="film-links">
                     <a href="https://www.dailymotion.com/video/x4qblty" target="_blank" rel="noopener">Dailymotion</a>
                     <a href="https://www.figra.fr/le-dernier-secret-de-yalta/" target="_blank" rel="noopener">FIGRA</a>
                 </div>
-            </div>
+            </div></div>
 
             <div class="film-card">
+                <img class="film-thumb" src="img/films/18_espion_pekin.jpg" alt="Un espion à Pékin" loading="lazy">
+                <div class="film-info">
                 <div class="film-header"><div class="film-title">Un espion à Pékin</div><div class="film-year">2012</div></div>
                 <div class="film-meta">Arte &middot; 52 min</div>
                 <div class="film-links">
@@ -677,14 +751,18 @@
                     <a href="https://www.ladybirdsfilms.fr/un-espion-a-pekin/" target="_blank" rel="noopener">Ladybirds</a>
                     <a href="https://www.imdb.com/title/tt2378563/" target="_blank" rel="noopener">IMDb</a>
                 </div>
-            </div>
+            </div></div>
 
             <div class="film-card">
+                <img class="film-thumb" src="img/films/19_penkovsky.jpg" alt="Penkovsky, espion pour la paix" loading="lazy">
+                <div class="film-info">
                 <div class="film-header"><div class="film-title">Penkovsky, espion pour la paix</div><div class="film-year">2011</div></div>
                 <div class="film-meta">France 5 &middot; 52 min</div>
-            </div>
+            </div></div>
 
             <div class="film-card">
+                <img class="film-thumb" src="img/films/20_dissident_kgb.jpg" alt="Le Dissident du KGB" loading="lazy">
+                <div class="film-info">
                 <div class="film-header"><div class="film-title">Le Dissident du KGB</div><div class="film-year">2011</div></div>
                 <div class="film-meta" data-lang="fr">Arte &middot; 75 min &middot; <strong>Étoile de la SCAM &middot; Sélection FIPA &amp; Pessac</strong></div>
                 <div class="film-meta" data-lang="en">Arte &middot; 75 min &middot; <strong>SCAM Star &middot; FIPA &amp; Pessac Selection</strong></div>
@@ -693,32 +771,39 @@
                     <a href="https://www.allocine.fr/film/fichefilm_gen_cfilm=198547.html" target="_blank" rel="noopener">AlloCiné</a>
                     <a href="https://www.imdb.com/title/tt1758686/" target="_blank" rel="noopener">IMDb</a>
                 </div>
-            </div>
+            </div></div>
 
             <div class="film-card">
+                <img class="film-thumb" src="img/films/21_sondages.jpg" alt="Sondages, je t'aime, moi non plus" loading="lazy">
+                <div class="film-info">
                 <div class="film-header"><div class="film-title">Sondages, je t'aime, moi non plus</div><div class="film-year">2007</div></div>
                 <div class="film-meta">Planète &middot; France 3 &middot; TSR &middot; 52 min</div>
-            </div>
+            </div></div>
 
             <div class="film-card">
+                <img class="film-thumb" src="img/films/22_immersion_mont_blanc.jpg" alt="En Immersion… au Mont Blanc" loading="lazy">
+                <div class="film-info">
                 <div class="film-header"><div class="film-title">En Immersion… au Mont Blanc</div><div class="film-year">2005</div></div>
                 <div class="film-meta" data-lang="fr">France 2 &middot; série 5×42 min</div>
                 <div class="film-meta" data-lang="en">France 2 &middot; series 5×42 min</div>
-            </div>
+            </div></div>
 
             <div class="film-card">
+                <img class="film-thumb" src="img/films/23_vie_volee.jpg" alt="Une vie volée, 57 ans sans voir la France" loading="lazy">
+                <div class="film-info">
                 <div class="film-header"><div class="film-title">Une vie volée, 57 ans sans voir la France</div><div class="film-year">2004</div></div>
                 <div class="film-meta">Planète &middot; France 3 &middot; 52 min</div>
-            </div>
+            </div></div>
 
             <div class="film-card">
+                <div class="film-info">
                 <div class="film-header"><div class="film-title">Piégés par Staline</div><div class="film-year">2003</div></div>
                 <div class="film-meta" data-lang="fr">France 5 &middot; France 3 &middot; co-réal. Xavier Deleu &middot; 52 min</div>
                 <div class="film-meta" data-lang="en">France 5 &middot; France 3 &middot; co-dir. Xavier Deleu &middot; 52 min</div>
                 <div class="film-links">
                     <a href="https://www.imdb.com/title/tt2302991/" target="_blank" rel="noopener">IMDb</a>
                 </div>
-            </div>
+            </div></div>
 
         </div>
     </div>
