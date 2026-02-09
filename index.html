@@ -264,6 +264,29 @@
         .contact-card a { color: var(--accent); text-decoration: none; }
         .contact-card a:hover { text-decoration: underline; }
 
+        /* Contact Form */
+        .contact-form { margin-top: 24px; }
+        .contact-form h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 16px; }
+        .contact-form form { display: flex; flex-direction: column; gap: 12px; max-width: 520px; }
+        .contact-form input, .contact-form textarea {
+            width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 6px;
+            background: var(--card-bg); color: var(--text); font-size: 0.9rem; font-family: inherit;
+            transition: border-color 0.2s;
+        }
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: none; border-color: var(--accent);
+        }
+        .contact-form textarea { resize: vertical; min-height: 120px; }
+        .contact-form button {
+            align-self: flex-start; padding: 10px 28px; background: var(--accent); color: #fff;
+            border: none; border-radius: 6px; font-size: 0.9rem; font-weight: 500; cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        .contact-form button:hover { opacity: 0.85; }
+        .form-status { font-size: 0.85rem; margin-top: 8px; }
+        .form-status.success { color: #4caf50; }
+        .form-status.error { color: #e53935; }
+
         /* Footer */
         footer { text-align: center; padding: 40px 20px; font-size: 0.78rem; color: var(--muted); border-top: 1px solid var(--border); }
         footer a { color: var(--muted); }
@@ -1061,6 +1084,23 @@
                 </p>
             </div>
         </div>
+
+        <div class="contact-form">
+            <h3 data-lang="fr">Envoyer un message</h3>
+            <h3 data-lang="en">Send a message</h3>
+            <form id="contact-form" action="https://formsubmit.co/ajax/nicolasjlt06@gmail.com" method="POST">
+                <input type="text" name="name" required>
+                <input type="email" name="email" required>
+                <textarea name="message" required></textarea>
+                <input type="hidden" name="_subject" value="nicolasjallot.com — Nouveau message">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="text" name="_honey" style="display:none">
+                <button type="submit" data-lang="fr">Envoyer</button>
+                <button type="submit" data-lang="en">Send</button>
+                <div id="form-status" class="form-status"></div>
+            </form>
+        </div>
     </div>
 </section>
 
@@ -1082,7 +1122,6 @@ function setLang(lang) {
     document.documentElement.lang = lang;
     document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
     document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-    // Update meta for SEO
     if (lang === 'en') {
         document.title = 'Nicolas Jallot — Writer, Documentary Filmmaker, Investigative Journalist';
         document.querySelector('meta[name="description"]').content = 'Nicolas Jallot, born 1965, is a French writer, documentary filmmaker and investigative journalist. Author of 10 books, director of 25 documentaries for France 2, France 3, Arte, M6.';
@@ -1090,7 +1129,65 @@ function setLang(lang) {
         document.title = 'Nicolas Jallot — Écrivain, Réalisateur, Grand Reporter | Site Officiel';
         document.querySelector('meta[name="description"]').content = 'Nicolas Jallot, né en 1965, est un écrivain, réalisateur de documentaires et grand reporter français. Auteur de 10 livres, réalisateur de 25 documentaires pour France 2, France 3, Arte, M6.';
     }
+    // Update form placeholders
+    var f = document.getElementById('contact-form');
+    if (f) {
+        f.querySelector('[name="name"]').placeholder = lang === 'en' ? 'Your name' : 'Votre nom';
+        f.querySelector('[name="email"]').placeholder = lang === 'en' ? 'Your email' : 'Votre email';
+        f.querySelector('[name="message"]').placeholder = lang === 'en' ? 'Your message...' : 'Votre message...';
+    }
 }
+
+// Contact form — AJAX submit
+document.addEventListener('DOMContentLoaded', function() {
+    var form = document.getElementById('contact-form');
+    var status = document.getElementById('form-status');
+    if (!form) return;
+    // Set initial placeholders
+    var lang = document.documentElement.lang || 'fr';
+    form.querySelector('[name="name"]').placeholder = lang === 'en' ? 'Your name' : 'Votre nom';
+    form.querySelector('[name="email"]').placeholder = lang === 'en' ? 'Your email' : 'Votre email';
+    form.querySelector('[name="message"]').placeholder = lang === 'en' ? 'Your message...' : 'Votre message...';
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var l = document.documentElement.lang || 'fr';
+        var btn = form.querySelector('button[data-lang="' + l + '"]');
+        var btnText = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = '...';
+        fetch(form.action, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({
+                name: form.querySelector('[name="name"]').value,
+                email: form.querySelector('[name="email"]').value,
+                message: form.querySelector('[name="message"]').value,
+                _subject: form.querySelector('[name="_subject"]').value,
+                _captcha: 'false',
+                _template: 'table'
+            })
+        }).then(function(r) { return r.json(); })
+        .then(function(data) {
+            btn.disabled = false;
+            btn.textContent = btnText;
+            if (data.success === 'true' || data.success === true) {
+                status.className = 'form-status success';
+                var l = document.documentElement.lang || 'fr';
+                status.textContent = l === 'en' ? 'Message sent! Thank you.' : 'Message envoyé ! Merci.';
+                form.reset();
+            } else {
+                throw new Error(data.message || 'error');
+            }
+        }).catch(function() {
+            btn.disabled = false;
+            btn.textContent = btnText;
+            status.className = 'form-status error';
+            var l = document.documentElement.lang || 'fr';
+            status.textContent = l === 'en' ? 'Error sending message. Please try again.' : 'Erreur d\'envoi. Veuillez réessayer.';
+        });
+    });
+});
 </script>
 
 </body>
