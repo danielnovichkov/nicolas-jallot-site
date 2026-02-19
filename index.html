@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nicolas Jallot — Écrivain, Réalisateur, Grand Reporter | Site Officiel</title>
-    <meta name="description" content="Nicolas Jallot, né en 1965, est un écrivain, réalisateur de documentaires et grand reporter français. Auteur de 10 livres, réalisateur de 25 documentaires pour France 2, France 3, Arte, M6. Filmographie, bibliographie, prix et distinctions.">
+    <meta name="description" content="Nicolas Jallot, né en 1965, est un écrivain, réalisateur de documentaires et grand reporter français. Auteur de 10 livres, réalisateur de 30 documentaires pour France 2, France 3, Arte, M6. Filmographie, bibliographie, prix et distinctions.">
     <meta name="keywords" content="Nicolas Jallot, documentaire, réalisateur, écrivain, grand reporter, journaliste, France 2, Arte, Massoud, KGB, Afghanistan, gueules bleues, film histoire">
     <meta name="author" content="Nicolas Jallot">
     <meta name="robots" content="index, follow">
@@ -12,7 +12,7 @@
 
     <!-- Open Graph -->
     <meta property="og:title" content="Nicolas Jallot — Écrivain, Réalisateur, Grand Reporter">
-    <meta property="og:description" content="Site officiel de Nicolas Jallot. Écrivain, réalisateur de documentaires, grand reporter. 25 documentaires, 10 livres, 30 ans d'investigation sur l'histoire contemporaine.">
+    <meta property="og:description" content="Site officiel de Nicolas Jallot. Écrivain, réalisateur de documentaires, grand reporter. 30 documentaires, 10 livres, 30 ans d'investigation sur l'histoire contemporaine.">
     <meta property="og:type" content="profile">
     <meta property="og:url" content="https://nicolasjallot.com/">
     <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/4/44/Nicolas_Jallot.jpg">
@@ -25,7 +25,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Nicolas Jallot — Écrivain, Réalisateur, Grand Reporter">
-    <meta name="twitter:description" content="Site officiel. 25 documentaires (France 2, Arte, M6), 10 livres. Spécialiste des films d'histoire contemporaine.">
+    <meta name="twitter:description" content="Site officiel. 30 documentaires (France 2, Arte, M6), 10 livres. Spécialiste des films d'histoire contemporaine.">
     <meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/4/44/Nicolas_Jallot.jpg">
 
     <!-- JSON-LD Structured Data -->
@@ -287,6 +287,67 @@
         .form-status.success { color: #4caf50; }
         .form-status.error { color: #e53935; }
 
+        /* Gallery */
+        .gallery-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 16px;
+        }
+        .gallery-item {
+            position: relative; overflow: hidden; border-radius: 8px;
+            border: 1px solid var(--border); cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .gallery-item:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.12); }
+        .gallery-item img {
+            width: 100%; height: 180px; object-fit: cover; display: block;
+        }
+        .gallery-caption {
+            padding: 10px 12px; background: var(--card-bg);
+        }
+        .gallery-caption .gallery-title {
+            font-family: 'Libre Baskerville', serif; font-size: 0.82rem;
+            font-weight: 700; line-height: 1.3; margin-bottom: 2px;
+        }
+        .gallery-caption .gallery-type {
+            font-size: 0.72rem; color: var(--muted); text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .gallery-filter { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
+        .gallery-filter-btn {
+            padding: 6px 16px; border: 1px solid var(--border); background: var(--card-bg);
+            border-radius: 20px; font-size: 0.82rem; font-family: 'Inter', sans-serif;
+            cursor: pointer; color: var(--muted); transition: all 0.2s;
+        }
+        .gallery-filter-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+        /* Lightbox */
+        .lightbox {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); z-index: 2000;
+            justify-content: center; align-items: center; flex-direction: column;
+        }
+        .lightbox.active { display: flex; }
+        .lightbox img { max-width: 90%; max-height: 80vh; border-radius: 6px; box-shadow: 0 4px 30px rgba(0,0,0,0.5); }
+        .lightbox-caption { color: #fff; margin-top: 16px; font-size: 0.95rem; text-align: center; max-width: 600px; }
+        .lightbox-close {
+            position: absolute; top: 20px; right: 24px; color: #fff; font-size: 2rem;
+            cursor: pointer; background: none; border: none; line-height: 1;
+        }
+        .lightbox-nav {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            color: #fff; font-size: 2.5rem; cursor: pointer; background: none;
+            border: none; padding: 20px; opacity: 0.7; transition: opacity 0.2s;
+        }
+        .lightbox-nav:hover { opacity: 1; }
+        .lightbox-prev { left: 10px; }
+        .lightbox-next { right: 10px; }
+
+        @media (max-width: 600px) {
+            .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+            .gallery-item img { height: 130px; }
+            .lightbox-nav { font-size: 1.5rem; padding: 10px; }
+        }
+
         /* Footer */
         footer { text-align: center; padding: 40px 20px; font-size: 0.78rem; color: var(--muted); border-top: 1px solid var(--border); }
         footer a { color: var(--muted); }
@@ -340,6 +401,7 @@
         <li><a href="#books" data-lang="fr">Livres</a><a href="#books" data-lang="en">Books</a></li>
         <li><a href="#films" data-lang="fr">Films</a><a href="#films" data-lang="en">Films</a></li>
         <li><a href="#awards" data-lang="fr">Prix</a><a href="#awards" data-lang="en">Awards</a></li>
+        <li><a href="#gallery" data-lang="fr">Galerie</a><a href="#gallery" data-lang="en">Gallery</a></li>
         <li><a href="#press" data-lang="fr">Presse</a><a href="#press" data-lang="en">Press</a></li>
         <li><a href="#links" data-lang="fr">Liens</a><a href="#links" data-lang="en">Links</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -359,9 +421,9 @@
             <p class="subtitle" data-lang="en">Writer &middot; Documentary Filmmaker &middot; Investigative Journalist</p>
             <div class="stats">
                 <div class="stat-item"><span class="stat-num">10</span><span class="stat-label" data-lang="fr">Livres</span><span class="stat-label" data-lang="en">Books</span></div>
-                <div class="stat-item"><span class="stat-num">25</span><span class="stat-label">Documentaires</span></div>
+                <div class="stat-item"><span class="stat-num">30</span><span class="stat-label">Documentaires</span></div>
                 <div class="stat-item"><span class="stat-num">30+</span><span class="stat-label" data-lang="fr">Ans de carrière</span><span class="stat-label" data-lang="en">Years</span></div>
-                <div class="stat-item"><span class="stat-num">7</span><span class="stat-label">Prix</span></div>
+                <div class="stat-item"><span class="stat-num">8</span><span class="stat-label">Prix</span></div>
             </div>
         </div>
     </div>
@@ -376,14 +438,14 @@
         <div class="bio-text" data-lang="fr">
             <p><strong>Nicolas Jallot</strong>, né le 6 avril 1965 à <strong>Renazé</strong> (Mayenne), est un écrivain, réalisateur de documentaires et grand reporter français. Fils d'un mineur de fond-perreyeur dans le bassin ardoisier du Haut-Anjou, cette origine marquera profondément son œuvre, jusqu'à son documentaire et livre sur les «&nbsp;gueules bleues&nbsp;» (2023-2024).</p>
             <p>Journaliste d'investigation dès le début des années 1990, il collabore à <strong>Sens Magazine</strong> (1991-1992), <strong>Le Point</strong> (à partir de 1994), <strong>VSD</strong> et <strong>La Chronique d'Amnesty Internationale</strong>, avant de devenir chef du service étranger de <strong>France Soir</strong>.</p>
-            <p>En 2001, sous l'influence de son mentor <strong>Christophe de Ponfilly</strong> — qui lui transmet sa passion pour l'Afghanistan — il quitte la presse quotidienne pour se consacrer au documentaire de création. Depuis, il a réalisé 25 documentaires pour <strong>France 2, France 3, France 5, Arte, LCP, M6, Histoire TV, BBC, RMC Découverte</strong> et les télévisions suisses et belges (RTS, RTBF).</p>
+            <p>En 2001, sous l'influence de <strong>Christophe de Ponfilly</strong> — qui lui transmet sa passion pour l'Afghanistan — il quitte la presse quotidienne pour se consacrer au documentaire de création. Depuis, il a réalisé 30 documentaires pour <strong>France 2, France 3, France 5, Arte, LCP, M6, Histoire TV, BBC, RMC Découverte</strong> et les télévisions suisses et belges (RTS, RTBF).</p>
             <p>Auteur de dix ouvrages publiés chez Belfond, Stock, Allary Éditions et Éditions Ouest-France, il est reconnu comme un spécialiste des films d'histoire contemporaine. Ses thèmes de prédilection traversent l'histoire soviétique, l'espionnage de la guerre froide, l'Afghanistan, les conflits oubliés et les destins brisés par l'Histoire.</p>
         </div>
 
         <div class="bio-text" data-lang="en">
             <p><strong>Nicolas Jallot</strong>, born April 6, 1965 in <strong>Renazé</strong> (Mayenne, France), is a French writer, documentary filmmaker, and investigative journalist. The son of a deep-shaft slate miner in the Haut-Anjou mining basin, this heritage profoundly shaped his work, culminating in his documentary and book about the "gueules bleues" (blue-faced miners, 2023-2024).</p>
             <p>An investigative journalist since the early 1990s, he contributed to <strong>Sens Magazine</strong> (1991-1992), <strong>Le Point</strong> (from 1994), <strong>VSD</strong>, and <strong>Amnesty International Chronicle</strong>, before becoming head of foreign news at <strong>France Soir</strong>.</p>
-            <p>In 2001, mentored by <strong>Christophe de Ponfilly</strong> — who transmitted his passion for Afghanistan — he left daily journalism to devote himself to documentary filmmaking. Since then, he has directed 25 documentaries for <strong>France 2, France 3, France 5, Arte, LCP, M6, Histoire TV, BBC, RMC Découverte</strong>, and Swiss and Belgian television (RTS, RTBF).</p>
+            <p>In 2001, influenced by <strong>Christophe de Ponfilly</strong> — who transmitted his passion for Afghanistan — he left daily journalism to devote himself to documentary filmmaking. Since then, he has directed 30 documentaries for <strong>France 2, France 3, France 5, Arte, LCP, M6, Histoire TV, BBC, RMC Découverte</strong>, and Swiss and Belgian television (RTS, RTBF).</p>
             <p>Author of ten books published by Belfond, Stock, Allary Éditions, and Éditions Ouest-France, he is recognized as a specialist in contemporary history films. His work spans Soviet history, Cold War espionage, Afghanistan, forgotten conflicts, and lives shattered by History.</p>
         </div>
 
@@ -402,9 +464,11 @@
         <div class="career-timeline">
             <h3 data-lang="fr">Parcours</h3>
             <h3 data-lang="en">Career</h3>
-            <div class="career-step"><span class="career-dates">1991–1992</span><span class="career-desc" data-lang="fr">Journaliste, <strong>Sens Magazine</strong></span><span class="career-desc" data-lang="en">Journalist, <strong>Sens Magazine</strong></span></div>
-            <div class="career-step"><span class="career-dates">1994–2001</span><span class="career-desc" data-lang="fr">Grand reporter — <strong>Le Point</strong>, <strong>VSD</strong>, <strong>Amnesty Internationale</strong></span><span class="career-desc" data-lang="en">Investigative reporter — <strong>Le Point</strong>, <strong>VSD</strong>, <strong>Amnesty International</strong></span></div>
-            <div class="career-step"><span class="career-dates">1997–2001</span><span class="career-desc" data-lang="fr">Chef du service étranger, <strong>France Soir</strong></span><span class="career-desc" data-lang="en">Head of foreign news, <strong>France Soir</strong></span></div>
+            <div class="career-step"><span class="career-dates">1989–1990</span><span class="career-desc" data-lang="fr">Photojournaliste aux agences <strong>Gamma</strong> et <strong>Cosmos-Contact</strong>. Pigiste à <strong>Politis</strong> et à <strong>l'Événement du Jeudi</strong></span><span class="career-desc" data-lang="en">Photojournalist at <strong>Gamma</strong> and <strong>Cosmos-Contact</strong> agencies. Freelance for <strong>Politis</strong> and <strong>l'Événement du Jeudi</strong></span></div>
+            <div class="career-step"><span class="career-dates">1991–1992</span><span class="career-desc" data-lang="fr">Journaliste, <strong>Sens Magazine</strong>, <strong>Peuples du Monde</strong>, <strong>IWZ</strong> (Illustrierte Wochen Zeitung), <strong>Ab und Reisen</strong> (Allemagne)</span><span class="career-desc" data-lang="en">Journalist, <strong>Sens Magazine</strong>, <strong>Peuples du Monde</strong>, <strong>IWZ</strong> (Illustrierte Wochen Zeitung), <strong>Ab und Reisen</strong> (Germany)</span></div>
+            <div class="career-step"><span class="career-dates">1993–1997</span><span class="career-desc" data-lang="fr">Grand reporter — <strong>Le Point</strong>, <strong>La Chronique d'Amnesty Internationale</strong></span><span class="career-desc" data-lang="en">Investigative reporter — <strong>Le Point</strong>, <strong>Amnesty International Chronicle</strong></span></div>
+            <div class="career-step"><span class="career-dates">1998–1999</span><span class="career-desc" data-lang="fr">Grand reporter — <strong>Les Cahiers d'Europe</strong></span><span class="career-desc" data-lang="en">Investigative reporter — <strong>Les Cahiers d'Europe</strong></span></div>
+            <div class="career-step"><span class="career-dates">2000–2001</span><span class="career-desc" data-lang="fr">Rédacteur en chef du service étranger, <strong>France Soir</strong></span><span class="career-desc" data-lang="en">Editor-in-chief of foreign news, <strong>France Soir</strong></span></div>
             <div class="career-step"><span class="career-dates">2001–</span><span class="career-desc" data-lang="fr">Auteur-réalisateur de documentaires, <strong>France Télévisions</strong></span><span class="career-desc" data-lang="en">Documentary writer-director, <strong>France Télévisions</strong></span></div>
         </div>
     </div>
@@ -571,8 +635,8 @@
     <div class="container">
         <h2 data-lang="fr">Filmographie</h2>
         <h2 data-lang="en">Filmography</h2>
-        <p class="section-lead" data-lang="fr">25 documentaires pour la télévision française et internationale (France 2, France 3, France 5, Arte, LCP, M6, BBC, RTS, RTBF)</p>
-        <p class="section-lead" data-lang="en">25 documentaries for French and international television (France 2, France 3, France 5, Arte, LCP, M6, BBC, RTS, RTBF)</p>
+        <p class="section-lead" data-lang="fr">30 documentaires pour la télévision française et internationale (France 2, France 3, France 5, Arte, LCP, M6, BBC, RTS, RTBF)</p>
+        <p class="section-lead" data-lang="en">30 documentaries for French and international television (France 2, France 3, France 5, Arte, LCP, M6, BBC, RTS, RTBF)</p>
 
         <div class="film-grid">
 
@@ -652,8 +716,8 @@
                 <img class="film-thumb" src="img/films/07_papa_doc.jpg" alt="Papa Doc, l'Oncle Sam et les Tontons Macoutes" loading="lazy">
                 <div class="film-info">
                 <div class="film-header"><div class="film-title">Papa Doc, l'Oncle Sam et les Tontons Macoutes</div><div class="film-year">2019</div></div>
-                <div class="film-meta" data-lang="fr">France 2 (Infrarouge) &middot; co-réal. Émile Rabaté &middot; 104 min</div>
-                <div class="film-meta" data-lang="en">France 2 (Infrarouge) &middot; co-dir. Émile Rabaté &middot; 104 min</div>
+                <div class="film-meta" data-lang="fr">France 2 (Infrarouge) &middot; 104 min</div>
+                <div class="film-meta" data-lang="en">France 2 (Infrarouge) &middot; 104 min</div>
                 <div class="film-links">
                     <a href="https://madelen.ina.fr/content/papa-doc-et-les-tontons-macoutes-77771" target="_blank" rel="noopener">INA Madelen</a>
                 </div>
@@ -846,8 +910,9 @@
                 <div class="award-item">
                     <span class="award-year">2024</span>
                     <div>
-                        <div class="award-name"><a href="https://www.figra.fr/liban-1982-radiographie-dun-massacre/" target="_blank" rel="noopener" data-lang="fr">Mention spéciale du Jury — FIGRA</a><a href="https://www.figra.fr/liban-1982-radiographie-dun-massacre/" target="_blank" rel="noopener" data-lang="en">Special Jury Mention — FIGRA</a></div>
-                        <div class="award-work">Liban 1982, radiographie d'un massacre</div>
+                        <div class="award-name" data-lang="fr">Prix du Récit Biographique — Prix Spécial du Jury — FFIR</div>
+                        <div class="award-name" data-lang="en">Biographical Narrative Award — Special Jury Prize — FFIR</div>
+                        <div class="award-work">Le Dernier Combat des gueules bleues</div>
                     </div>
                 </div>
 
@@ -896,8 +961,8 @@
                 <div class="award-item">
                     <span class="award-year">2004</span>
                     <div>
-                        <div class="award-name" data-lang="fr">Prix du Récit Biographique + Prix Spécial du Jury</div>
-                        <div class="award-name" data-lang="en">Biographical Narrative Award + Special Jury Prize</div>
+                        <div class="award-name" data-lang="fr">Prix du Récit Biographique — Prix Spécial du Jury</div>
+                        <div class="award-name" data-lang="en">Biographical Narrative Award — Special Jury Prize</div>
                         <div class="award-work">Ma vie volée</div>
                     </div>
                 </div>
@@ -929,6 +994,168 @@
         </div>
     </div>
 </section>
+
+<!-- Gallery -->
+<section id="gallery">
+    <div class="container">
+        <h2 data-lang="fr">Galerie</h2>
+        <h2 data-lang="en">Gallery</h2>
+        <p class="section-lead" data-lang="fr">Images des films et ouvrages</p>
+        <p class="section-lead" data-lang="en">Images from films and books</p>
+
+        <div class="gallery-filter">
+            <button class="gallery-filter-btn active" onclick="filterGallery('all')" data-lang="fr">Tout</button>
+            <button class="gallery-filter-btn active" onclick="filterGallery('all')" data-lang="en">All</button>
+            <button class="gallery-filter-btn" onclick="filterGallery('film')">Films</button>
+            <button class="gallery-filter-btn" onclick="filterGallery('book')" data-lang="fr">Livres</button>
+            <button class="gallery-filter-btn" onclick="filterGallery('book')" data-lang="en">Books</button>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item" data-type="film" onclick="openLightbox(0)">
+                <img src="img/films/01_tatoueur_auschwitz.jpg" alt="L'histoire vraie du tatoueur d'Auschwitz" loading="lazy">
+                <div class="gallery-caption"><div class="gallery-title">L'histoire vraie du tatoueur d'Auschwitz</div><div class="gallery-type">Film &middot; 2025</div></div>
+            </div>
+            <div class="gallery-item" data-type="film" onclick="openLightbox(1)">
+                <img src="img/films/02_gueules_bleues.jpg" alt="Le Dernier Combat des gueules bleues" loading="lazy">
+                <div class="gallery-caption"><div class="gallery-title">Le Dernier Combat des gueules bleues</div><div class="gallery-type">Film &middot; 2024</div></div>
+            </div>
+            <div class="gallery-item" data-type="film" onclick="openLightbox(2)">
+                <img src="img/films/03_liban_1982.jpg" alt="Liban 1982" loading="lazy">
+                <div class="gallery-caption"><div class="gallery-title">Liban 1982, radiographie d'un massacre</div><div class="gallery-type">Film &middot; 2023</div></div>
+            </div>
+            <div class="gallery-item" data-type="film" onclick="openLightbox(3)">
+                <img src="img/films/04_massoud_heritage.jpg" alt="Massoud, l'héritage" loading="lazy">
+                <div class="gallery-caption"><div class="gallery-title">Massoud, l'héritage</div><div class="gallery-type">Film &middot; 2021</div></div>
+            </div>
+            <div class="gallery-item" data-type="film" onclick="openLightbox(4)">
+                <img src="img/films/05_11_septembre_massoud.jpg" alt="11 Septembre, l'avertissement du Commandant Massoud" loading="lazy">
+                <div class="gallery-caption"><div class="gallery-title">11 Septembre, l'avertissement du Cdt Massoud</div><div class="gallery-type">Film &middot; 2021</div></div>
+            </div>
+            <div class="gallery-item" data-type="film" onclick="openLightbox(5)">
+                <img src="img/films/06_afghanistan_tombeau.jpg" alt="Afghanistan, le tombeau de l'URSS" loading="lazy">
+                <div class="gallery-caption"><div class="gallery-title">Afghanistan, le tombeau de l'URSS</div><div class="gallery-type">Film &middot; 2019</div></div>
+            </div>
+            <div class="gallery-item" data-type="film" onclick="openLightbox(6)">
+                <img src="img/films/07_papa_doc.jpg" alt="Papa Doc" loading="lazy">
+                <div class="gallery-caption"><div class="gallery-title">Papa Doc, l'Oncle Sam et les Tontons Macoutes</div><div class="gallery-type">Film &middot; 2019</div></div>
+            </div>
+            <div class="gallery-item" data-type="film" onclick="openLightbox(7)">
+                <img src="img/films/08_iiie_reich.jpg" alt="Le IIIe Reich n'aura pas la bombe" loading="lazy">
+                <div class="gallery-caption"><div class="gallery-title">Le III<sup>e</sup> Reich n'aura pas la bombe</div><div class="gallery-type">Film &middot; 2018</div></div>
+            </div>
+            <div class="gallery-item" data-type="film" onclick="openLightbox(8)">
+                <img src="img/films/09_french_doctors.jpg" alt="Afghanistan, l'héritage des French Doctors" loading="lazy">
+                <div class="gallery-caption"><div class="gallery-title">Afghanistan, l'héritage des French Doctors</div><div class="gallery-type">Film &middot; 2018</div></div>
+            </div>
+            <div class="gallery-item" data-type="film" onclick="openLightbox(9)">
+                <img src="img/films/10_ile_lumiere.jpg" alt="L'Île de lumière" loading="lazy">
+                <div class="gallery-caption"><div class="gallery-title">L'Île de lumière</div><div class="gallery-type">Film &middot; 2017</div></div>
+            </div>
+            <div class="gallery-item" data-type="film" onclick="openLightbox(10)">
+                <img src="img/films/11_football_kgb.jpg" alt="Football, arme du KGB" loading="lazy">
+                <div class="gallery-caption"><div class="gallery-title">Football, arme du KGB</div><div class="gallery-type">Film &middot; 2017</div></div>
+            </div>
+            <div class="gallery-item" data-type="film" onclick="openLightbox(11)">
+                <img src="img/films/12_aviation_14_18.jpg" alt="Aviation, l'héritage de 14-18" loading="lazy">
+                <div class="gallery-caption"><div class="gallery-title">Aviation, l'héritage de 14-18</div><div class="gallery-type">Film &middot; 2017</div></div>
+            </div>
+            <div class="gallery-item" data-type="film" onclick="openLightbox(12)">
+                <img src="img/films/13_cameraman.jpg" alt="Dans la peau du premier cameraman de guerre" loading="lazy">
+                <div class="gallery-caption"><div class="gallery-title">Dans la peau du premier cameraman de guerre</div><div class="gallery-type">Film &middot; 2016</div></div>
+            </div>
+            <div class="gallery-item" data-type="film" onclick="openLightbox(13)">
+                <img src="img/films/14_de_gaulle_soviets.jpg" alt="De Gaulle chez les Soviets" loading="lazy">
+                <div class="gallery-caption"><div class="gallery-title">De Gaulle chez les Soviets</div><div class="gallery-type">Film &middot; 2016</div></div>
+            </div>
+            <div class="gallery-item" data-type="film" onclick="openLightbox(14)">
+                <img src="img/films/15_rouen_hiroshima.jpg" alt="De Rouen à Hiroshima" loading="lazy">
+                <div class="gallery-caption"><div class="gallery-title">De Rouen à Hiroshima</div><div class="gallery-type">Film &middot; 2015</div></div>
+            </div>
+            <div class="gallery-item" data-type="film" onclick="openLightbox(15)">
+                <img src="img/films/16_genocide_armenien.jpg" alt="Génocide arménien, le spectre de 1915" loading="lazy">
+                <div class="gallery-caption"><div class="gallery-title">Génocide arménien, le spectre de 1915</div><div class="gallery-type">Film &middot; 2014</div></div>
+            </div>
+            <div class="gallery-item" data-type="film" onclick="openLightbox(16)">
+                <img src="img/films/17_secret_yalta.jpg" alt="Le Dernier Secret de Yalta" loading="lazy">
+                <div class="gallery-caption"><div class="gallery-title">Le Dernier Secret de Yalta</div><div class="gallery-type">Film &middot; 2013</div></div>
+            </div>
+            <div class="gallery-item" data-type="film" onclick="openLightbox(17)">
+                <img src="img/films/18_espion_pekin.jpg" alt="Un espion à Pékin" loading="lazy">
+                <div class="gallery-caption"><div class="gallery-title">Un espion à Pékin</div><div class="gallery-type">Film &middot; 2012</div></div>
+            </div>
+            <div class="gallery-item" data-type="film" onclick="openLightbox(18)">
+                <img src="img/films/19_penkovsky.jpg" alt="Penkovsky, espion pour la paix" loading="lazy">
+                <div class="gallery-caption"><div class="gallery-title">Penkovsky, espion pour la paix</div><div class="gallery-type">Film &middot; 2011</div></div>
+            </div>
+            <div class="gallery-item" data-type="film" onclick="openLightbox(19)">
+                <img src="img/films/20_dissident_kgb.jpg" alt="Le Dissident du KGB" loading="lazy">
+                <div class="gallery-caption"><div class="gallery-title">Le Dissident du KGB</div><div class="gallery-type">Film &middot; 2011</div></div>
+            </div>
+            <div class="gallery-item" data-type="film" onclick="openLightbox(20)">
+                <img src="img/films/21_sondages.jpg" alt="Sondages, je t'aime, moi non plus" loading="lazy">
+                <div class="gallery-caption"><div class="gallery-title">Sondages, je t'aime, moi non plus</div><div class="gallery-type">Film &middot; 2007</div></div>
+            </div>
+            <div class="gallery-item" data-type="film" onclick="openLightbox(21)">
+                <img src="img/films/22_immersion_mont_blanc.jpg" alt="En Immersion… au Mont Blanc" loading="lazy">
+                <div class="gallery-caption"><div class="gallery-title">En Immersion… au Mont Blanc</div><div class="gallery-type">Film &middot; 2005</div></div>
+            </div>
+            <div class="gallery-item" data-type="film" onclick="openLightbox(22)">
+                <img src="img/films/23_vie_volee.jpg" alt="Une vie volée" loading="lazy">
+                <div class="gallery-caption"><div class="gallery-title">Une vie volée, 57 ans sans voir la France</div><div class="gallery-type">Film &middot; 2004</div></div>
+            </div>
+            <div class="gallery-item" data-type="book" onclick="openLightbox(23)">
+                <img src="img/books/01_gueules_bleues.jpg" alt="Au pays des gueules bleues" loading="lazy">
+                <div class="gallery-caption"><div class="gallery-title">Au pays des gueules bleues</div><div class="gallery-type" data-lang="fr">Livre &middot; 2024</div><div class="gallery-type" data-lang="en">Book &middot; 2024</div></div>
+            </div>
+            <div class="gallery-item" data-type="book" onclick="openLightbox(24)">
+                <img src="img/books/02_futbol.jpg" alt="Futbol" loading="lazy">
+                <div class="gallery-caption"><div class="gallery-title">Futbol</div><div class="gallery-type" data-lang="fr">Livre &middot; 2018</div><div class="gallery-type" data-lang="en">Book &middot; 2018</div></div>
+            </div>
+            <div class="gallery-item" data-type="book" onclick="openLightbox(25)">
+                <img src="img/books/03_viktor_orekhov.jpg" alt="Viktor Orekhov" loading="lazy">
+                <div class="gallery-caption"><div class="gallery-title">Viktor Orekhov — Un dissident au KGB</div><div class="gallery-type" data-lang="fr">Livre &middot; 2011</div><div class="gallery-type" data-lang="en">Book &middot; 2011</div></div>
+            </div>
+            <div class="gallery-item" data-type="book" onclick="openLightbox(26)">
+                <img src="img/books/04_manipulation.jpg" alt="Manipulation de l'opinion" loading="lazy">
+                <div class="gallery-caption"><div class="gallery-title">Manipulation de l'opinion</div><div class="gallery-type" data-lang="fr">Livre &middot; 2007</div><div class="gallery-type" data-lang="en">Book &middot; 2007</div></div>
+            </div>
+            <div class="gallery-item" data-type="book" onclick="openLightbox(27)">
+                <img src="img/books/05_chevardnadze.jpg" alt="Chevardnadze" loading="lazy">
+                <div class="gallery-caption"><div class="gallery-title">Chevardnadze — Le Renard blanc du Caucase</div><div class="gallery-type" data-lang="fr">Livre &middot; 2005</div><div class="gallery-type" data-lang="en">Book &middot; 2005</div></div>
+            </div>
+            <div class="gallery-item" data-type="book" onclick="openLightbox(28)">
+                <img src="img/books/06_ma_vie_volee.jpg" alt="Ma vie volée" loading="lazy">
+                <div class="gallery-caption"><div class="gallery-title">Ma vie volée</div><div class="gallery-type" data-lang="fr">Livre &middot; 2004</div><div class="gallery-type" data-lang="en">Book &middot; 2004</div></div>
+            </div>
+            <div class="gallery-item" data-type="book" onclick="openLightbox(29)">
+                <img src="img/books/07_pieges_staline.jpg" alt="Piégés par Staline" loading="lazy">
+                <div class="gallery-caption"><div class="gallery-title">Piégés par Staline</div><div class="gallery-type" data-lang="fr">Livre &middot; 2003</div><div class="gallery-type" data-lang="en">Book &middot; 2003</div></div>
+            </div>
+            <div class="gallery-item" data-type="book" onclick="openLightbox(30)">
+                <img src="img/books/08_ces_hommes_mur.jpg" alt="Ces hommes qui ont fait tomber le Mur" loading="lazy">
+                <div class="gallery-caption"><div class="gallery-title">Ces hommes qui ont fait tomber le Mur</div><div class="gallery-type" data-lang="fr">Livre &middot; 1999</div><div class="gallery-type" data-lang="en">Book &middot; 1999</div></div>
+            </div>
+            <div class="gallery-item" data-type="book" onclick="openLightbox(31)">
+                <img src="img/books/09_faucille_seringue.jpg" alt="La faucille et la seringue" loading="lazy">
+                <div class="gallery-caption"><div class="gallery-title">La faucille et la seringue</div><div class="gallery-type" data-lang="fr">Livre &middot; 1997</div><div class="gallery-type" data-lang="en">Book &middot; 1997</div></div>
+            </div>
+            <div class="gallery-item" data-type="book" onclick="openLightbox(32)">
+                <img src="img/books/10_haiti.jpg" alt="Haïti — Dix ans d'histoire secrète" loading="lazy">
+                <div class="gallery-caption"><div class="gallery-title">Haïti — Dix ans d'histoire secrète</div><div class="gallery-type" data-lang="fr">Livre &middot; 1995</div><div class="gallery-type" data-lang="en">Book &middot; 1995</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+    <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">&#8249;</button>
+    <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)">&#8250;</button>
+    <img id="lightbox-img" src="" alt="">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+</div>
 
 <!-- Press -->
 <section id="press">
@@ -1124,10 +1351,10 @@ function setLang(lang) {
     document.getElementById('btn-en').classList.toggle('active', lang === 'en');
     if (lang === 'en') {
         document.title = 'Nicolas Jallot — Writer, Documentary Filmmaker, Investigative Journalist';
-        document.querySelector('meta[name="description"]').content = 'Nicolas Jallot, born 1965, is a French writer, documentary filmmaker and investigative journalist. Author of 10 books, director of 25 documentaries for France 2, France 3, Arte, M6.';
+        document.querySelector('meta[name="description"]').content = 'Nicolas Jallot, born 1965, is a French writer, documentary filmmaker and investigative journalist. Author of 10 books, director of 30 documentaries for France 2, France 3, Arte, M6.';
     } else {
         document.title = 'Nicolas Jallot — Écrivain, Réalisateur, Grand Reporter | Site Officiel';
-        document.querySelector('meta[name="description"]').content = 'Nicolas Jallot, né en 1965, est un écrivain, réalisateur de documentaires et grand reporter français. Auteur de 10 livres, réalisateur de 25 documentaires pour France 2, France 3, Arte, M6.';
+        document.querySelector('meta[name="description"]').content = 'Nicolas Jallot, né en 1965, est un écrivain, réalisateur de documentaires et grand reporter français. Auteur de 10 livres, réalisateur de 30 documentaires pour France 2, France 3, Arte, M6.';
     }
     // Update form placeholders
     var f = document.getElementById('contact-form');
@@ -1187,6 +1414,79 @@ document.addEventListener('DOMContentLoaded', function() {
             status.textContent = l === 'en' ? 'Error sending message. Please try again.' : 'Erreur d\'envoi. Veuillez réessayer.';
         });
     });
+});
+
+// Gallery filter
+function filterGallery(type) {
+    var items = document.querySelectorAll('.gallery-item');
+    items.forEach(function(item) {
+        if (type === 'all' || item.dataset.type === type) {
+            item.style.display = '';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+    var btns = document.querySelectorAll('.gallery-filter-btn');
+    btns.forEach(function(btn) {
+        var onclick = btn.getAttribute('onclick') || '';
+        btn.classList.toggle('active', onclick.indexOf("'" + type + "'") > -1);
+    });
+}
+
+// Lightbox
+var galleryItems = [];
+var currentLightbox = 0;
+
+function buildGalleryItems() {
+    galleryItems = [];
+    document.querySelectorAll('.gallery-item').forEach(function(item) {
+        if (item.style.display !== 'none') {
+            var img = item.querySelector('img');
+            var title = item.querySelector('.gallery-title');
+            galleryItems.push({ src: img.src, caption: title ? title.textContent : '' });
+        }
+    });
+}
+
+function openLightbox(idx) {
+    buildGalleryItems();
+    var visibleItems = Array.from(document.querySelectorAll('.gallery-item')).filter(function(i) { return i.style.display !== 'none'; });
+    var clickedItem = document.querySelectorAll('.gallery-item')[idx];
+    currentLightbox = visibleItems.indexOf(clickedItem);
+    if (currentLightbox < 0) currentLightbox = 0;
+    showLightboxImage();
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+function navLightbox(dir) {
+    currentLightbox += dir;
+    if (currentLightbox < 0) currentLightbox = galleryItems.length - 1;
+    if (currentLightbox >= galleryItems.length) currentLightbox = 0;
+    showLightboxImage();
+}
+
+function showLightboxImage() {
+    if (!galleryItems[currentLightbox]) return;
+    document.getElementById('lightbox-img').src = galleryItems[currentLightbox].src;
+    document.getElementById('lightbox-caption').textContent = galleryItems[currentLightbox].caption;
+}
+
+document.addEventListener('keydown', function(e) {
+    var lb = document.getElementById('lightbox');
+    if (!lb.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') navLightbox(-1);
+    if (e.key === 'ArrowRight') navLightbox(1);
+});
+
+document.getElementById('lightbox').addEventListener('click', function(e) {
+    if (e.target === this) closeLightbox();
 });
 </script>
 
